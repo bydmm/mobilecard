@@ -1,5 +1,9 @@
 !function ($) {
   $(window).on('load', function () {
+		//define var
+		var preview = false;
+	
+	
 		Intialize();
 		//旋转重构	
 		var supportsOrientationChange = "onorientationchange" in window,  
@@ -31,6 +35,16 @@
 			// 	'swing'
 			// );
 		}
+		//
+		$('a.custombtn').click(function(){
+			return preview;
+		});
+		
+		$('a.custombtn').click(function(){
+			var self = $(this);
+			currentBlock = self.attr('id');
+			
+		});
 		
 		//editor
 		$(".noUiSlider").slider({
