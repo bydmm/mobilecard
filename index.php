@@ -7,5 +7,11 @@ define('APP_DEBUG', true);
 // 采用rest模式运行 
 define('MODE_NAME', 'rest');
 
+//url常量
+define('PUBLIC', 'Public/');
+define('IMAGES', 'Public/images');
+define('CSS', 'Public/css');
+define('JS', 'Public/js');
+
 
 require 'ThinkPHP/ThinkPHP.php';

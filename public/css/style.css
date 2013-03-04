@@ -1,0 +1,13 @@
+a.custombtn:hover{
+	text-decoration: none;
+}
+a.custombtn{
+	border-radius: 25px 25px 25px 25px;
+	background:rgb(255, 122, 0);
+	text-align:center;
+	color:#fff;
+	margin-top:10px;
+}
+.address{
+	text-align:center;
+}
