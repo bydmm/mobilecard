@@ -59,7 +59,7 @@
 		  });
 		}
 
-		var cols = document.querySelectorAll('#columns .column');
+		var cols = document.querySelectorAll('.basic .custombtn');
 		[].forEach.call(cols, function(col) {
 			col.addEventListener('dragstart', handleDragStart, false);
 			col.addEventListener('dragenter', handleDragEnter, false)
