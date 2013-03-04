@@ -9,6 +9,7 @@
 	<link rel="stylesheet" href="<?php echo CSS?>/style.css" type="text/css" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="<?php echo CSS?>/slider.css" type="text/css" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="<?php echo CSS?>/colorpicker.css" type="text/css" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="<?php echo CSS?>/useradmin.css" type="text/css" title="no title" charset="utf-8">
 	<!-- Date: 2013-03-02 -->
 </head>
 <body>
@@ -28,15 +29,15 @@
 	    </div>
 	  </div>
 	</div>
-	<div class="container-fluid" style="margin-top:40px;">
+	<div class="container-fluid">
 		<div class="row-fluid">
 			<div class="span4 preview">
 				<div class="basic">
 					<div class="row-fluid header">
-						<span class="span6" >
+						<span class="span4" >
 							<a href="index.php"><img class="logo" src="<?php echo IMAGES ?>/logo.png"/></a>
 						</span>
-						<span class="span6" >Fysiotherapie Boxman</span>
+						<span class="span8" >Fysiotherapie Boxman</span>
 					</div>
 					<div class="row-fluid">
 						<a class="span6 custombtn">INFO</a>
@@ -64,7 +65,7 @@
 				      <label class="control-label" for="input01">colorpicker</label>
 				      <div class="controls">
 								<div class="colorpicker input-append color" data-color="rgb(255, 146, 180)" data-color-format="rgb">
-								  <input type="text" class="input-xlarge" value="" readonly >
+								  <input type="text" class="input-medium" value="" readonly >
 								  <span class="add-on">
 										<i style="background-color: rgb(255, 146, 180)"></i>
 									</span>

@@ -35,9 +35,9 @@
 		//editor
 		$(".noUiSlider").slider({
 			'min':"0",
-			"max":"100"
+			"max":"50"
 		}).on('slide', function(ev){
-			$('.custombtn').css({'border-radius': ev.value+"px"});
+			$('.custombtn').css({'border-radius': ev.value+"%"});
 		});
 		//colorpicker
 		$('.colorpicker').colorpicker().on('changeColor', function(ev){
