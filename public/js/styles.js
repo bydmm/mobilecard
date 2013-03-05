@@ -41,7 +41,9 @@
 		});
 		
 		$('a.custombtn').click(function(){
-			var self = $(this);
+			var self = $(this);	
+			$('a.custombtn').removeClass('gradient');
+			self.addClass('gradient');
 			currentBlock = self.attr('id');
 			
 			reloadForm(self);

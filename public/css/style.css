@@ -1,13 +1,26 @@
 a.custombtn:hover{
 	text-decoration: none;
 }
+.block{
+  margin-top:2.127659574468085%;
+  *margin-top:2.074468085106383%;
+}
 a.custombtn{
-	border-radius: 25px 25px 25px 25px;
+	border-radius: 15%;
 	background:rgb(255, 122, 0);
 	text-align:center;
 	color:#fff;
-	margin-top:10px;
+	display:block;
 }
 .address{
 	text-align:center;
+}
+
+body a.gradient{
+	box-shadow:1px 1px 15px #000;
+
+}
+.add{
+  margin-top:2.127659574468085%;
+  *margin-top:2.074468085106383%;
 }
