@@ -48,7 +48,8 @@
 								<a 
 									id="<?php echo $first->id; ?>" 
 									order="<?php echo $first->order; ?>" 
-									class="custombtn" 
+									class="custombtn"
+									style="background-color:<?php echo $first->backgroundColor;?>"
 									href="<?php echo $first->link; ?>">
 									<?php echo $first->title; ?>
 								</a>
@@ -59,6 +60,7 @@
 									id="<?php echo $next->id; ?>" 
 									order="<?php echo $next->order; ?>" 
 									class="custombtn" 
+									style="background-color:<?php echo $next->backgroundColor;?>"
 									href="<?php echo $next->link; ?>">
 									<?php echo $next->title; ?>
 								</a>
@@ -79,17 +81,17 @@
 				      <label class="control-label" for="input01">Border-radius</label>
 				      <div class="controls">
 								<div class="noUiSlider"></div>
-				        <input type="hidden" class="input-xlarge" id="input01">
+				        <input type="hidden" class="input-xlarge" id="">
 				        <p class="help-block">slider</p>
 				      </div>
 				    </div>
-				    <div class="control-group">
+				    <div class="control-group editor-background-color">
 				      <label class="control-label" for="input01">Colorpicker</label>
 				      <div class="controls">
-								<div class="colorpicker input-append color" data-color="rgb(255, 146, 180)" data-color-format="rgb">
+								<div id="colorpicker" class="input-append color" data-color="rgb(0, 0, 0)" data-color-format="rgb">
 								  <input type="text" class="input-medium" value="" readonly >
 								  <span class="add-on">
-										<i style="background-color: rgb(255, 146, 180)"></i>
+										<i style="background-color: rgb(0, 0, 0)"></i>
 									</span>
 								</div>
 				      </div>
@@ -103,7 +105,7 @@
 				    <div class="control-group">
 				      <label class="control-label" for="input01">Link</label>
 				      <div class="controls">
-									<input type="text" class="input-medium" name="src" value="">
+									<input type="text" class="input-medium editor-link" name="link" value="">
 				      </div>
 				    </div>					
 				  </fieldset>
@@ -113,8 +115,8 @@
 	</div>
 	
 	<script type="text/javascript" charset="utf-8">
-		var blocks = eval(<?php echo $blocks;?>);
-		var currentBlock = "1";
+		var blocks = eval('<?php echo json_encode($blocks);?>');
+		var currentBlockIndex = "1";
 	</script>
 	<script type="text/javascript" src="<?php echo JS ?>/jQuery.js"></script>
 	<script type="text/javascript" src="<?php echo JS ?>/bootstrap.js"></script>
