@@ -2,8 +2,8 @@
   $(window).on('load', function () {
 		//define var
 		var preview = false;
-	
-	
+		
+		
 		Intialize();
 		//旋转重构	
 		var supportsOrientationChange = "onorientationchange" in window,  
@@ -44,32 +44,69 @@
 			var self = $(this);	
 			$('a.custombtn').removeClass('gradient');
 			self.addClass('gradient');
-			currentBlock = self.attr('id');
-			
 			reloadForm(self);
 		});
 		
 		//form
 		function reloadForm(self)
 		{
-			$('.editor-title').val(self.html());
+			currentBlockIndex = self.attr('id');
+			findBlock(currentBlockIndex);
+			$('.editor-title').val(currentBlock.title);
+			$('.editor-link').val(currentBlock.link);
+			
+			//form handle
+			$(".editor-title").keyup(function(){
+				var title = $(this).val();
+			  $('#'+currentBlockIndex).html(title);
+				currentBlock.title = title;
+				storeBlocks();
+			});
+
+			//editor
+			$(".noUiSlider").slider({
+				'min':"0",
+				"max":"50"
+			}).on('slide', function(ev){
+				var border_radius = ev.value+"%";
+				$('#'+currentBlockIndex).css({'border-radius': border_radius});
+			});
+			
+			//colorpicker
+			$('.editor-background-color #colorpicker').attr({'data-color': currentBlock.backgroundColor });
+			$('.editor-background-color i').css({'background-color': currentBlock.backgroundColor });
+			$('#colorpicker').colorpicker({
+			}).on('changeColor', function(ev){
+				var backgroundColor = ev.color.toHex();
+			  $('#'+currentBlockIndex).css({'background-color': backgroundColor });
+				currentBlock.backgroundColor = backgroundColor;
+				storeBlocks();
+			});
 		}
-		//form handle
-		$(".editor-title").keyup(function(){
-		  $('#'+currentBlock).html($(this).val());
-		});
 		
+		function findBlock(id)
+		{
+			$(blocks).each(function(){
+				if(this.id == id){
+					currentBlock = this;
+					return this;
+				}
+			});
+		}
 		
-		//editor
-		$(".noUiSlider").slider({
-			'min':"0",
-			"max":"50"
-		}).on('slide', function(ev){
-			$('#'+currentBlock).css({'border-radius': ev.value+"%"});
-		});
-		//colorpicker
-		$('.colorpicker').colorpicker().on('changeColor', function(ev){
-		  $('#'+currentBlock).css({'background-color': ev.color.toHex()});
-		});
+		//可用么
+		function storeBlocks()
+		{
+			for(var i=0; i<blocks.length; i++)
+			{
+				if(blocks[i].id == currentBlock.id){
+					blocks[i] = currentBlock;
+					return 1;
+				}
+			}
+		}
+		
+		$('#'+currentBlockIndex).click();
+		
   });
 }(window.jQuery);
