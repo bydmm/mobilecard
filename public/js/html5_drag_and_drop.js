@@ -3,20 +3,13 @@
 		var dragSrcEl = null;
 
 		function handleDragStart(e) {
-		  // Target (this) element is the source node.
-		  //this.style.opacity = '0.4';
-		  //this.classList.add('drag');
-
 		  dragSrcEl = $(this);
 
 		  e.dataTransfer.effectAllowed = 'move';
 		  e.dataTransfer.setData('text/html', this.innerHTML);
 		}
 
-		function handleDragEnter(e) {
-			// this / e.target is the current hover target.
-			//this.classList.add('over');
-		}
+		function handleDragEnter(e) {}
 
 		function handleDragOver(e) {
 		  if (e.preventDefault) {
@@ -28,15 +21,10 @@
 		  return false;
 		}
 
-		function handleDragLeave(e) {
-			//this.style.opacity = '1.0';
-			//this.classList.remove('drag');
-		  //this.classList.remove('over');  // this / e.target is previous target element.
-		}
+		function handleDragLeave(e) {}
 
 		function handleDrop(e) {
 		  // this/e.target is current target element.
-		  //this.classList.remove('drag');
 		  if (e.stopPropagation) {
 		    e.stopPropagation(); // Stops some browsers from redirecting.
 		  }
@@ -52,14 +40,7 @@
 		  return false;
 		}
 
-		function handleDragEnd(e) {
-		  // this/e.target is the source node.
-
-			// [].forEach.call(cols, function (col) {
-		 //  //   col.classList.remove('over');
-		 //  	this.classList.remove('drag');
-		 //  });
-		}
+		function handleDragEnd(e) {}
 
 		var cols = document.querySelectorAll('.custombtn');
 		[].forEach.call(cols, function(col) {
