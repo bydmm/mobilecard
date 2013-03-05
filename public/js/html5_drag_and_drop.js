@@ -42,7 +42,7 @@
 
 		function handleDragEnd(e) {}
 
-		var cols = document.querySelectorAll('.custombtn');
+		var cols = document.querySelectorAll('.block');
 		[].forEach.call(cols, function(col) {
 			col.addEventListener('dragstart', handleDragStart, false);
 			col.addEventListener('dragenter', handleDragEnter, false)
@@ -51,6 +51,19 @@
 			col.addEventListener('drop', handleDrop, false);
 			col.addEventListener('dragend', handleDragEnd, false);
 		});
+
+
+		
+		$('#add').toggle(
+		  function(){
+		  	var add_html = $('.basic .row-fluid:last .block:last').html();	  	
+		  	$('.basic .row-fluid:last').after('<div class="row-fluid"><div draggable="true" class="block span6">'+add_html+'</div></div>');
+		  },
+		  function(){
+		  	var add_html = $('.basic .row-fluid:last .block:last').html();
+		  	$('.basic .row-fluid:last .block:last').after('<div draggable="true" class="block span6">'+add_html+'</div>');
+		  }
+		);
 
 	});
 })(jQuery);  

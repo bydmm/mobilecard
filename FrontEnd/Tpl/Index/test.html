@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>demo</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="Kyoma Houohin">
+</head>
+<body>
+				<div class="row-fluid">
+					<a id="add" class="span12 add btn" href="##" >ADD+</a>
+				</div>	
+	
+	
+	<script type="text/javascript" src="http://code.jquery.com/jquery-1.8.1.min.js"></script>
+
+	<script type="text/javascript">
+	$('#add').toggle(
+		  function(){
+		  	//var add_html = $('.basic .row-fluid:last .block:last').html();
+		  	alert('1');		  	
+		  	//$('.basic .row-fluid:last').after('<div class="row-fluid"><div draggable="true" class="block span6">'+add_html+'</div></div>');
+		  },
+		  function(){
+		  	//var add_html = $('.basic .row-fluid:last .block:last').html();
+		  	alert('2');
+		  	//$('.basic .row-fluid:last .block:last').after('<div draggable="true" class="block span6">'+add_html+'</div>');
+		  }
+		);
+	</script>
+</body>
+</html>
