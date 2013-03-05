@@ -37,31 +37,51 @@
 		    $(this).html(tmp);
 		  }
 
+		  // 禁止拖拽后的a标签跳转
+		  $('a.custombtn').click(function(){
+				return false;
+			});
+
 		  return false;
 		}
 
 		function handleDragEnd(e) {}
 
-		var cols = document.querySelectorAll('.block');
-		[].forEach.call(cols, function(col) {
-			col.addEventListener('dragstart', handleDragStart, false);
-			col.addEventListener('dragenter', handleDragEnter, false)
-			col.addEventListener('dragover', handleDragOver, false);
-			col.addEventListener('dragleave', handleDragLeave, false);
-			col.addEventListener('drop', handleDrop, false);
-			col.addEventListener('dragend', handleDragEnd, false);
-		});
+		function addDragAndDrop(selectors) { // 添加拖拽事件
+			var cols = document.querySelectorAll(selectors);
+			[].forEach.call(cols, function(col) {
+				col.addEventListener('dragstart', handleDragStart, false);
+				col.addEventListener('dragenter', handleDragEnter, false)
+				col.addEventListener('dragover', handleDragOver, false);
+				col.addEventListener('dragleave', handleDragLeave, false);
+				col.addEventListener('drop', handleDrop, false);
+				col.addEventListener('dragend', handleDragEnd, false);
+			});
+		}
 
-
+		addDragAndDrop('.block');
 		
-		$('#add').toggle(
+		$('#add').click(
 		  function(){
-		  	var add_html = $('.basic .row-fluid:last .block:last').html();	  	
-		  	$('.basic .row-fluid:last').after('<div class="row-fluid"><div draggable="true" class="block span6">'+add_html+'</div></div>');
-		  },
-		  function(){
-		  	var add_html = $('.basic .row-fluid:last .block:last').html();
-		  	$('.basic .row-fluid:last .block:last').after('<div draggable="true" class="block span6">'+add_html+'</div>');
+		  	var add_html = $('.basic .row-fluid:last .block:last').html();	 
+
+		  	switch ($('.basic .row-fluid:last .block').length){
+		  		case 1:
+		  			$('.basic .row-fluid:last .block:last')
+		  				.after('<div draggable="true" class="block span6">'+add_html+'</div>');
+		  			break;
+		  		case 2:
+		  			$('.basic .row-fluid:last')
+		  				.after('<div class="row-fluid"><div draggable="true" class="block span6">'+add_html+'</div></div>');
+		  			break;
+		  	}
+		  	
+		  	addDragAndDrop('.block');
+
+		  	// 禁止新增的a标签进行跳转
+		  	$('a.custombtn').click(function(){
+					return false;
+				});
 		  }
 		);
 
