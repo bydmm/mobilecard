@@ -40,7 +40,7 @@
 			return preview;
 		});
 		
-		$('a.custombtn').click(function(){
+		$('a.custombtn').live('click',function(){
 			var self = $(this);	
 			$('a.custombtn').removeClass('gradient');
 			self.addClass('gradient');
@@ -52,14 +52,24 @@
 		{
 			currentBlockIndex = self.attr('id');
 			findBlock(currentBlockIndex);
-			$('.editor-title').val(currentBlock.title);
+			
 			$('.editor-link').val(currentBlock.link);
 			
-			//form handle
+			//editor-title
+			$('.editor-title').val(currentBlock.title);
 			$(".editor-title").keyup(function(){
 				var title = $(this).val();
 			  $('#'+currentBlockIndex).html(title);
 				currentBlock.title = title;
+				storeBlocks();
+			});
+			
+			//editor-link
+			$('.editor-link').val(currentBlock.link);
+			$(".editor-link").keyup(function(){
+				var link = $(this).val();
+			  $('#'+currentBlockIndex).html(title);
+				currentBlock.link = link;
 				storeBlocks();
 			});
 
@@ -70,6 +80,8 @@
 			}).on('slide', function(ev){
 				var border_radius = ev.value+"%";
 				$('#'+currentBlockIndex).css({'border-radius': border_radius});
+				currentBlock.border_radius = border_radius;
+				storeBlocks();
 			});
 			
 			//colorpicker
@@ -82,8 +94,24 @@
 				currentBlock.backgroundColor = backgroundColor;
 				storeBlocks();
 			});
+			
+			//remove
+
 		}
-		
+			
+		$('#block-remove').popover({
+			'title': 'Caution',
+			'trigger': 'hover',
+			'html': true,
+			'placement': 'top',
+			'content': '<div>It will remove this block!</div>'
+		});
+		$('#block-remove').modal({
+		    backdrop: true,
+		    keyboard: true,
+		    show: false
+		});
+			
 		function findBlock(id)
 		{
 			$(blocks).each(function(){
