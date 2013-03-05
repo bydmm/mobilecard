@@ -36,11 +36,11 @@
 			// );
 		}
 		//
-		$('a.custombtn').click(function(){
+		$('a.custombtn').live('click', function(){
 			return preview;
 		});
 		
-		$('a.custombtn').live('click',function(){
+		$('a.custombtn').live('click', function(){
 			var self = $(this);	
 			$('a.custombtn').removeClass('gradient');
 			self.addClass('gradient');

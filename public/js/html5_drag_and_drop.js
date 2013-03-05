@@ -37,11 +37,6 @@
 		    $(this).html(tmp);
 		  }
 
-		  // 禁止拖拽后的a标签跳转
-		  $('a.custombtn').click(function(){
-				return false;
-			});
-
 		  return false;
 		}
 
@@ -61,10 +56,10 @@
 
 		addDragAndDrop('.block');
 		
+		var newid = 0;
 		$('#add').click(
 		  function(){
 		  	var add_html = $('.basic .row-fluid:last .block:last').html();	 
-
 		  	switch ($('.basic .row-fluid:last .block').length){
 		  		case 1:
 		  			$('.basic .row-fluid:last .block:last')
@@ -75,13 +70,10 @@
 		  				.after('<div class="row-fluid"><div draggable="true" class="block span6">'+add_html+'</div></div>');
 		  			break;
 		  	}
-		  	
+		  	$('.basic .row-fluid:last .block:last a').attr('id',"new"+newid);
+				newid++;
 		  	addDragAndDrop('.block');
 
-		  	// 禁止新增的a标签进行跳转
-		  	$('a.custombtn').click(function(){
-					return false;
-				});
 		  }
 		);
 
