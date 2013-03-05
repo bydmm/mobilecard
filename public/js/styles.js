@@ -44,18 +44,30 @@
 			var self = $(this);
 			currentBlock = self.attr('id');
 			
+			reloadForm(self);
 		});
+		
+		//form
+		function reloadForm(self)
+		{
+			$('.editor-title').val(self.html());
+		}
+		//form handle
+		$(".editor-title").keyup(function(){
+		  $('#'+currentBlock).html($(this).val());
+		});
+		
 		
 		//editor
 		$(".noUiSlider").slider({
 			'min':"0",
 			"max":"50"
 		}).on('slide', function(ev){
-			$('.custombtn').css({'border-radius': ev.value+"%"});
+			$('#'+currentBlock).css({'border-radius': ev.value+"%"});
 		});
 		//colorpicker
 		$('.colorpicker').colorpicker().on('changeColor', function(ev){
-		  $('.custombtn').css({'background-color': ev.color.toHex()});
+		  $('#'+currentBlock).css({'background-color': ev.color.toHex()});
 		});
   });
 }(window.jQuery);
