@@ -56,19 +56,22 @@
 
 		addDragAndDrop('.block');
 
-		function Block(name) {
-			return eval({"title":"NEW","link":"##","id":name,"order":"","border_radius":"15%","backgroundColor":"rgb(255, 122, 0)"});
+		function Block(id, order) {
+			return eval({"title":"NEW","link":"##","id":id,"order":order,"border_radius":"15%","backgroundColor":"rgb(255, 122, 0)"});
 		}
 		
 		var newid = 0;
 		$('#add').click(
 		  function(){
-			var index = blocks.push(new Block("new" + newid));
+			var lastBlock = $('.basic .row-fluid:last .block:last a');
+		  	var height = lastBlock.css('height');
+		  	var width = lastBlock.css('width');
+		  	var line_height = lastBlock.css('line-height');
+		  	var font_size = lastBlock.css('font-size');
+		  	var order = parseInt(lastBlock.attr('order'));
 
-		  	var height = $('.basic .row-fluid:last .block:last a').css('height');
-		  	var width = $('.basic .row-fluid:last .block:last a').css('width');
-		  	var line_height = $('.basic .row-fluid:last .block:last a').css('line-height');
-		  	var font_size = $('.basic .row-fluid:last .block:last a').css('font-size');
+			var index = blocks.push(new Block("new" + newid, order+1));
+
 		  	var style = 'height:' + height 
 		  		+ '; width:' + width 
 		  		+ '; line-height:' + line_height
