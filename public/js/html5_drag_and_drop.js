@@ -59,7 +59,8 @@
 		var newid = 0;
 		$('#add').click(
 		  function(){
-		  	var add_html = $('.basic .row-fluid:last .block:last').html();	 
+		  	var add_html = $('.basic .row-fluid:last .block:last').html();	
+		 
 		  	switch ($('.basic .row-fluid:last .block').length){
 		  		case 1:
 		  			$('.basic .row-fluid:last .block:last')

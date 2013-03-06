@@ -96,7 +96,8 @@
 			});
 			
 			//remove
-
+			
+			
 		}
 			
 		$('#block-remove').popover({
@@ -135,6 +136,8 @@
 		}
 		
 		$('#'+currentBlockIndex).click();
+		
+		
 		
   });
 }(window.jQuery);
