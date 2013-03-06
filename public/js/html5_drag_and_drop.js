@@ -55,11 +55,22 @@
 		}
 
 		addDragAndDrop('.block');
+
+		function Block(name) {
+			return eval({"title":"NEW","link":"##","id":name,"order":"","border_radius":"15%","backgroundColor":"rgb(255, 122, 0)"});
+		}
 		
 		var newid = 0;
 		$('#add').click(
 		  function(){
-		  	var add_html = $('.basic .row-fluid:last .block:last').html();	 
+		  	var style = $('.basic .row-fluid:last .block:last a').attr('style');
+		  	var index = blocks.push(new Block("new" + newid));
+		  	var add_html = '<a id="'+ blocks[index-1].id
+		  		+ '" order="'+ blocks[index-1].order
+		  		+ '" href="'+ blocks[index-1].link 
+		  		+ '"" style="'+ style +'" class="custombtn">'
+		  		+ blocks[index-1].title +'</a>';
+		  		
 		  	switch ($('.basic .row-fluid:last .block').length){
 		  		case 1:
 		  			$('.basic .row-fluid:last .block:last')
