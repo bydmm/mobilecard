@@ -56,19 +56,35 @@
 
 		addDragAndDrop('.block');
 
-		function Block(name) {
-			return eval({"title":"NEW","link":"##","id":name,"order":"","border_radius":"15%","backgroundColor":"rgb(255, 122, 0)"});
+		function Block(id, order) {
+			return eval({"title":"NEW","link":"##","id":id,"order":order,"border_radius":"15%","backgroundColor":"rgb(255, 122, 0)"});
 		}
 		
 		var newid = 0;
 		$('#add').click(
 		  function(){
-		  	var style = $('.basic .row-fluid:last .block:last a').attr('style');
-		  	var index = blocks.push(new Block("new" + newid));
+			var lastBlock = $('.basic .row-fluid:last .block:last a');
+		  	var height = lastBlock.css('height');
+		  	var width = lastBlock.css('width');
+		  	var line_height = lastBlock.css('line-height');
+		  	var font_size = lastBlock.css('font-size');
+		  	var order = parseInt(lastBlock.attr('order'));
+
+			var index = blocks.push(new Block("new" + newid, order+1));
+
+		  	var style = 'height:' + height 
+		  		+ '; width:' + width 
+		  		+ '; line-height:' + line_height
+		  		+ '; font-size:' + font_size
+		  		+ '; border_radius:' + blocks[index-1].border_radius
+		  		+ '; backgroundColor:' + blocks[index-1].backgroundColor;
+		  	
+		  	
 		  	var add_html = '<a id="'+ blocks[index-1].id
 		  		+ '" order="'+ blocks[index-1].order
 		  		+ '" href="'+ blocks[index-1].link 
-		  		+ '"" style="'+ style +'" class="custombtn">'
+		  		+ '"" style="'+ style 
+		  		+'" class="custombtn">'
 		  		+ blocks[index-1].title +'</a>';
 		  		
 		  	switch ($('.basic .row-fluid:last .block').length){
