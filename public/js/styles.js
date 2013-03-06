@@ -74,12 +74,16 @@
 			});
 
 			//editor
-			$(".noUiSlider").slider({
-				'min':"0",
-				"max":"50"
+			//alert(currentBlock.border_radius);
+			var radius = parseInt(currentBlock.border_radius);
+			
+			$("#editor-border-radius").slider({
+				'min': "0",
+				"max": "50",
+				'value': radius
 			}).on('slide', function(ev){
-				var border_radius = ev.value+"%";
-				$('#'+currentBlockIndex).css({'border-radius': border_radius});
+				var border_radius = ev.value;
+				$('#'+currentBlockIndex).css({'border-radius': border_radius+"%"});
 				currentBlock.border_radius = border_radius;
 				storeBlocks();
 			});
@@ -92,6 +96,15 @@
 				var backgroundColor = ev.color.toHex();
 			  $('#'+currentBlockIndex).css({'background-color': backgroundColor });
 				currentBlock.backgroundColor = backgroundColor;
+				storeBlocks();
+			});
+			
+			//editor-font-family
+			$('#editor-font-family').val(currentBlock.fontfamily);
+			$('#editor-font-family').change(function(){
+				var font = $(this).val();
+				currentBlock.fontfamily  = font;
+				$('#'+currentBlockIndex).css({'font-family': font });
 				storeBlocks();
 			});
 			
