@@ -70,10 +70,9 @@
 		  				.after('<div class="row-fluid"><div draggable="true" class="block span6">'+add_html+'</div></div>');
 		  			break;
 		  	}
-		  	$('.basic .row-fluid:last .block:last a').attr('id',"new"+newid);
-				newid++;
+		  	$('.basic .row-fluid:last .block:last a').attr('id',"new"+newid).trigger('click');
+			newid++;
 		  	addDragAndDrop('.block');
-
 		  }
 		);
 
