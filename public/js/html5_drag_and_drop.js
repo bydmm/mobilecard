@@ -63,12 +63,25 @@
 		var newid = 0;
 		$('#add').click(
 		  function(){
-		  	var style = $('.basic .row-fluid:last .block:last a').attr('style');
-		  	var index = blocks.push(new Block("new" + newid));
+			var index = blocks.push(new Block("new" + newid));
+
+		  	var height = $('.basic .row-fluid:last .block:last a').css('height');
+		  	var width = $('.basic .row-fluid:last .block:last a').css('width');
+		  	var line_height = $('.basic .row-fluid:last .block:last a').css('line-height');
+		  	var font_size = $('.basic .row-fluid:last .block:last a').css('font-size');
+		  	var style = 'height:' + height 
+		  		+ '; width:' + width 
+		  		+ '; line-height:' + line_height
+		  		+ '; font-size:' + font_size
+		  		+ '; border_radius:' + blocks[index-1].border_radius
+		  		+ '; backgroundColor:' + blocks[index-1].backgroundColor;
+		  	
+		  	
 		  	var add_html = '<a id="'+ blocks[index-1].id
 		  		+ '" order="'+ blocks[index-1].order
 		  		+ '" href="'+ blocks[index-1].link 
-		  		+ '"" style="'+ style +'" class="custombtn">'
+		  		+ '"" style="'+ style 
+		  		+'" class="custombtn">'
 		  		+ blocks[index-1].title +'</a>';
 		  		
 		  	switch ($('.basic .row-fluid:last .block').length){
