@@ -39,7 +39,7 @@
 						<span class="span4" >
 							<a href="index.php"><img class="logo" src="<?php echo IMAGES ?>/logo.png"/></a>
 						</span>
-						<h3 class="span8" >Fysiotherapie Boxman</h3>
+						<h3 class="pagetitle span8" >Fysiotherapie Boxman</h3>
 					</div>
 					<?php for($i=0; $i < count($blocks); $i = $i + 2 ): ?>
 						<?php $first = $blocks[$i]; ?>
@@ -89,7 +89,7 @@
 						<div class="control-group">
 				      <label class="control-label" for="input01">Title</label>
 				      <div class="controls">
-				        <input id="" type="text" value="<?php echo $title;?>" class="input-xlarge" id="">
+				        <input id="pagetitle" type="text" value="<?php echo $title;?>" class="input-xlarge" id="">
 				      </div>
 				    </div>
 						<div class="control-group">
@@ -176,27 +176,6 @@
 	<script type="text/javascript" src="<?php echo JS ?>/html5_drag_and_drop.js"></script>
 	<script type="text/javascript" src="<?php echo EDITOR ?>/kindeditor.js"></script>
 	<script type="text/javascript" src="<?php echo EDITOR ?>/lang/en.js"></script>
-	<script type="text/javascript" charset="utf-8">
-	KindEditor.ready(function(K) {
-		var editor = K.editor({
-			allowFileManager : true,
-			langType : 'en'
-		});
-		K('#drag-images').click(function() {
-			editor.loadPlugin('image', function() {
-				editor.plugin.imageDialog({
-					showRemote : false,
-					imageUrl : K('#url3').val(),
-					clickFn : function(url, title, width, height, border, align) {
-						K('#url3').val(url);
-						K('img.logo').attr('src',url);
-						editor.hideDialog();
-					}
-				});
-			});
-			return false;
-		});
-	});	
-	</script>
+	<script type="text/javascript" src="<?php echo JS ?>/editor.js"></script>
 </body>
 </html>
