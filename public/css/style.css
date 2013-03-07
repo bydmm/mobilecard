@@ -5,6 +5,9 @@ a.custombtn:hover{
   margin-top:2.127659574468085%;
   *margin-top:2.074468085106383%;
 }
+img.logo{
+	width:100%;
+}
 a.custombtn{
 	border-radius: 15%;
 	background:rgb(255, 122, 0);
@@ -24,10 +27,15 @@ body a.gradient{
   margin-top:2.127659574468085%;
   *margin-top:2.074468085106383%;
 }
-.drag-images
+#drag-images
 {
-	border: 5px dashed #ccc;
-	height:128px;
-	width:128px;
-	background-color:#fff;
+  background-color: #FFFFFF;
+  border: 5px dashed #CCCCCC;
+  color: #CCCCCC;
+  font-size: 30px;
+  height: 128px;
+  line-height: 128px;
+  text-align: center;
+  width: 128px;
+	cursor: pointer;
 }

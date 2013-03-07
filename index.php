@@ -12,5 +12,6 @@ define('PUBLIC', 'Public/');
 define('IMAGES', 'Public/images');
 define('CSS', 'Public/css');
 define('JS', 'Public/js');
+define('EDITOR', 'Public/editor');
 
 require 'ThinkPHP/ThinkPHP.php';

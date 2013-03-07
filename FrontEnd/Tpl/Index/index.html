@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="<?php echo CSS?>/colorpicker.css" type="text/css" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="<?php echo CSS?>/useradmin.css" type="text/css" title="no title" charset="utf-8">
 	<link rel="stylesheet" href="<?php echo CSS?>/html5_drag_and_drop.css" type="text/css" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="<?php echo EDITOR?>/themes/default/default.css" />
 	<!-- Date: 2013-03-02 -->
 </head>
 <body>
@@ -94,8 +95,11 @@
 						<div class="control-group">
 				      <label class="control-label" for="input01">LOGO</label>
 				      <div class="controls">
-								<div class="drag-images"></div>
-				        <input id="" type="hidden" value="<?php echo $LOGO;?>" class="input-xlarge" id="">
+								<div id="drag-images">
+									<span>Click</span>
+									<img>
+								</div>
+				        <input id="url3" type="hidden" value="<?php echo $LOGO;?>" class="input-xlarge" id="">
 				      </div>
 				    </div>
 					</fieldset>
@@ -170,5 +174,29 @@
 	<script type="text/javascript" src="<?php echo JS ?>/bootstrap-slider.js"></script>
 	<script type="text/javascript" src="<?php echo JS ?>/bootstrap-colorpicker.js"></script>
 	<script type="text/javascript" src="<?php echo JS ?>/html5_drag_and_drop.js"></script>
+	<script type="text/javascript" src="<?php echo EDITOR ?>/kindeditor.js"></script>
+	<script type="text/javascript" src="<?php echo EDITOR ?>/lang/en.js"></script>
+	<script type="text/javascript" charset="utf-8">
+	KindEditor.ready(function(K) {
+		var editor = K.editor({
+			allowFileManager : true,
+			langType : 'en'
+		});
+		K('#drag-images').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					showRemote : false,
+					imageUrl : K('#url3').val(),
+					clickFn : function(url, title, width, height, border, align) {
+						K('#url3').val(url);
+						K('img.logo').attr('src',url);
+						editor.hideDialog();
+					}
+				});
+			});
+			return false;
+		});
+	});	
+	</script>
 </body>
 </html>
