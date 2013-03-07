@@ -24,6 +24,7 @@
 		function handleDragLeave(e) {}
 
 		function handleDrop(e) {
+
 		  // this/e.target is current target element.
 		  if (e.stopPropagation) {
 		    e.stopPropagation(); // Stops some browsers from redirecting.
@@ -60,48 +61,87 @@
 			return eval({"title":"NEW","link":"##","id":id,"order":order,"border_radius":"15%","backgroundColor":"rgb(255, 122, 0)"});
 		}
 		
+		var css = new Object; // 保存按钮的css信息的对象
 		var newid = 0;
 		$('#add').click(
 		  function(){
-			var lastBlock = $('.basic .row-fluid:last .block:last a');
-		  	var height = lastBlock.css('height');
-		  	var width = lastBlock.css('width');
-		  	var line_height = lastBlock.css('line-height');
-		  	var font_size = lastBlock.css('font-size');
-		  	var order = parseInt(lastBlock.attr('order'));
+				var width = $('.basic').width() * (1 - 0.02127659574468085) / 2;
+				var height = width + 'px';
+				var line_height = width + 'px';
+				var font_size = width/4 + 'px';
 
-			var index = blocks.push(new Block("new" + newid, order+1));
+				var lastBlock = $('.basic .row-fluid .block a.custombtn:last');
+				// 如果页面被清空 
+				if (0 == lastBlock.length) {
+				  var order = 0;
+				} else {
+				  var order = parseInt(lastBlock.attr('order'));
+				}
 
-		  	var style = 'height:' + height 
-		  		+ '; width:' + width 
-		  		+ '; line-height:' + line_height
-		  		+ '; font-size:' + font_size
-		  		+ '; border_radius:' + blocks[index-1].border_radius
-		  		+ '; backgroundColor:' + blocks[index-1].backgroundColor;
-		  	
-		  	
-		  	var add_html = '<a id="'+ blocks[index-1].id
-		  		+ '" order="'+ blocks[index-1].order
-		  		+ '" href="'+ blocks[index-1].link 
-		  		+ '"" style="'+ style 
-		  		+'" class="custombtn">'
-		  		+ blocks[index-1].title +'</a>';
+				var index = blocks.push(new Block("new" + newid, order+1));
+
+			  var style = 'height:' + height 
+			  	+ '; line-height:' + line_height
+			  	+ '; font-size:' + font_size
+			  	+ '; border_radius:' + blocks[index-1].border_radius
+			  	+ '; backgroundColor:' + blocks[index-1].backgroundColor;
+			  	
+			  	
+			  var add_html = '<a id="'+ blocks[index-1].id
+			  	+ '" order="'+ blocks[index-1].order
+			  	+ '" href="'+ blocks[index-1].link 
+			  	+ '"" style="'+ style 
+			  	+'" class="custombtn">'
+			  	+ blocks[index-1].title +'</a>';
 		  		
 		  	switch ($('.basic .row-fluid:last .block').length){
-		  		case 1:
+		  		case 1: // 在行中新增
 		  			$('.basic .row-fluid:last .block:last')
 		  				.after('<div draggable="true" class="block span6">'+add_html+'</div>');
 		  			break;
-		  		case 2:
+		  		case 2: // 新增一行
+		  		default:
 		  			$('.basic .row-fluid:last')
 		  				.after('<div class="row-fluid"><div draggable="true" class="block span6">'+add_html+'</div></div>');
-		  			break;
 		  	}
-		  	$('.basic .row-fluid:last .block:last a').attr('id',"new"+newid).trigger('click');
-			newid++;
+		  	// 模拟点击
+		  	$('.basic .row-fluid .block a.custombtn:last').attr('id', "new"+newid).trigger('click');
+				newid++;
 		  	addDragAndDrop('.block');
 		  }
 		);
+
+		$('#block-remove').click(function(){
+			var gradient = $('a.gradient');
+			// 禁止没有选中时删除
+			if (0 == gradient.length) {
+				return false;
+			}
+
+			css.height = gradient.css('height');
+			css.line_height = gradient.css('line-height');
+			css.font_size = gradient.css('font-size');
+
+			var id = gradient.attr('id');
+			// 从数组中删除
+			for (var i = blocks.length - 1; i >= 0; i--) {
+				if (blocks[i].id == id) {
+					blocks.splice(i , 1);
+					break;
+				}
+			}		
+			
+			var row = gradient.parent('.block').parent('.row-fluid');
+			// 如果该行只剩一个 则将该行删除
+			if (1 == row.find('a.custombtn').length) {
+				row.remove();
+			} else { // 否则只将选中的删除
+				gradient.remove();
+			}
+
+			// 模拟点击
+			$('.basic .row-fluid .block a:last').trigger('click');
+		});
 
 	});
 })(jQuery);  
