@@ -20,10 +20,13 @@
 		
 		function Intialize(){
 			var width = $('a.custombtn').width();
-			$('a.custombtn').css({
+			$('.preview a.custombtn').css({
 				'height': width + 'px',
 				'line-height': width + 'px',
 				'font-size': width/4 + 'px'
+			});
+			$('.preview .block').css({
+				'height': width + 'px'
 			});
 			// $('a.custombtn').animate(
 			// 	{
@@ -45,6 +48,10 @@
 			$('a.custombtn').removeClass('gradient');
 			self.addClass('gradient');
 			reloadForm(self);
+		});
+		
+		$('.preview .header').live('click', function(){
+			
 		});
 		
 		//form

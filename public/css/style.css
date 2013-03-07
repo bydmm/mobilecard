@@ -24,3 +24,10 @@ body a.gradient{
   margin-top:2.127659574468085%;
   *margin-top:2.074468085106383%;
 }
+.drag-images
+{
+	border: 5px dashed #ccc;
+	height:128px;
+	width:128px;
+	background-color:#fff;
+}
