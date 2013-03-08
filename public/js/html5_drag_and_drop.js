@@ -3,42 +3,42 @@
 		var dragSrcEl = null;
 
 		function handleDragStart(e) {
-		  dragSrcEl = $(this);
+			dragSrcEl = $(this);
 
-		  e.dataTransfer.effectAllowed = 'move';
-		  e.dataTransfer.setData('text/html', this.innerHTML);
+			e.dataTransfer.effectAllowed = 'move';
+			e.dataTransfer.setData('text/html', this.innerHTML);
 		}
 
 		function handleDragEnter(e) {}
 
 		function handleDragOver(e) {
-		  if (e.preventDefault) {
-		    e.preventDefault(); // Necessary. Allows us to drop.
-		  }
+			if (e.preventDefault) {
+				e.preventDefault(); // Necessary. Allows us to drop.
+			}
 
-		  e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
+			e.dataTransfer.dropEffect = 'move';  // See the section on the DataTransfer object.
 
-		  return false;
+			return false;
 		}
 
 		function handleDragLeave(e) {}
 
 		function handleDrop(e) {
 
-		  // this/e.target is current target element.
-		  if (e.stopPropagation) {
-		    e.stopPropagation(); // Stops some browsers from redirecting.
-		  }
+			// this/e.target is current target element.
+			if (e.stopPropagation) {
+				e.stopPropagation(); // Stops some browsers from redirecting.
+			}
 
-		  // Don't do anything if dropping the same column we're dragging.
-		  if (dragSrcEl != this) {
-		    // Set the source column's HTML to the HTML of the column we dropped on.
-		    var tmp = dragSrcEl.html();
-		    dragSrcEl.html($(this).html());
-		    $(this).html(tmp);
-		  }
+			// Don't do anything if dropping the same column we're dragging.
+			if (dragSrcEl != this) {
+				// Set the source column's HTML to the HTML of the column we dropped on.
+				var tmp = dragSrcEl.html();
+				dragSrcEl.html($(this).html());
+				$(this).html(tmp);
+			}
 
-		  return false;
+			return false;
 		}
 
 		function handleDragEnd(e) {}
@@ -58,13 +58,13 @@
 		addDragAndDrop('.block');
 
 		function Block(id, order) {
-			return eval({"title":"NEW","link":"##","id":id,"order":order,"border_radius":"15%","backgroundColor":"rgb(255, 122, 0)"});
+			return eval({"title":"NEW","link":"","id":id,"order":order,"border_radius":"15%","backgroundColor":"rgb(255, 122, 0)","summery":""});
 		}
 		
 		var css = new Object; // 保存按钮的css信息的对象
 		var newid = 0;
 		$('#add').click(
-		  function(){
+			function(){
 				var width = $('.basic').width() * (1 - 0.02127659574468085) / 2;
 				var height = width + 'px';
 				var line_height = width + 'px';
@@ -73,42 +73,42 @@
 				var lastBlock = $('.basic .row-fluid .block a.custombtn:last');
 				// 如果页面被清空 
 				if (0 == lastBlock.length) {
-				  var order = 0;
+					var order = 0;
 				} else {
-				  var order = parseInt(lastBlock.attr('order'));
+					var order = parseInt(lastBlock.attr('order'));
 				}
 
 				var index = blocks.push(new Block("new" + newid, order+1));
 
-			  var style = 'height:' + height 
-			  	+ '; line-height:' + line_height
-			  	+ '; font-size:' + font_size
-			  	+ '; border_radius:' + blocks[index-1].border_radius
-			  	+ '; backgroundColor:' + blocks[index-1].backgroundColor;
-			  	
-			  	
-			  var add_html = '<a id="'+ blocks[index-1].id
-			  	+ '" order="'+ blocks[index-1].order
-			  	+ '" href="'+ blocks[index-1].link 
-			  	+ '"" style="'+ style 
-			  	+'" class="custombtn">'
-			  	+ blocks[index-1].title +'</a>';
-		  		
-		  	switch ($('.basic .row-fluid:last .block').length){
-		  		case 1: // 在行中新增
-		  			$('.basic .row-fluid:last .block:last')
-		  				.after('<div draggable="true" class="block span6">'+add_html+'</div>');
-		  			break;
-		  		case 2: // 新增一行
-		  		default:
-		  			$('.basic .row-fluid:last')
-		  				.after('<div class="row-fluid"><div draggable="true" class="block span6">'+add_html+'</div></div>');
-		  	}
-		  	// 模拟点击
-		  	$('.basic .row-fluid .block a.custombtn:last').attr('id', "new"+newid).trigger('click');
+				var style = 'height:' + height 
+					+ '; line-height:' + line_height
+					+ '; font-size:' + font_size
+					+ '; border_radius:' + blocks[index-1].border_radius
+					+ '; backgroundColor:' + blocks[index-1].backgroundColor;
+					
+					
+				var add_html = '<a id="'+ blocks[index-1].id
+					+ '" order="'+ blocks[index-1].order
+					+ '" href="'+ blocks[index-1].link 
+					+ '"" style="'+ style 
+					+'" class="custombtn">'
+					+ blocks[index-1].title +'</a>';
+					
+				switch ($('.basic .row-fluid:last .block').length){
+					case 1: // 在行中新增
+						$('.basic .row-fluid:last .block:last')
+							.after('<div draggable="true" class="block span6">'+add_html+'</div>');
+						break;
+					case 2: // 新增一行
+					default:
+						$('.basic .row-fluid:last')
+							.after('<div class="row-fluid"><div draggable="true" class="block span6">'+add_html+'</div></div>');
+				}
+				// 模拟点击
+				$('.basic .row-fluid .block a.custombtn:last').attr('id', "new"+newid).trigger('click');
 				newid++;
-		  	addDragAndDrop('.block');
-		  }
+				addDragAndDrop('.block');
+			}
 		);
 
 		$('#block-remove').click(function(){
