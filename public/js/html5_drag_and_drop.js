@@ -105,7 +105,7 @@
 					+'" class="custombtn">'
 					+ blocks[index-1].title +'</a>';
 					
-				switch ($('.basic .row-fluid:last .block').length){
+				switch ($('.basic .row-fluid:last .block a.custombtn').length){
 					case 1: // 在行中新增
 						$('.basic .row-fluid:last .block:last')
 							.html(add_html);
