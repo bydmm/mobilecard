@@ -114,8 +114,8 @@
 					default:
 						$('.basic .row-fluid:last')
 							.after('<div class="row-fluid"><div draggable="true" class="block span6">'
-								+add_html+'</div><div draggable="true" class="block span6" style="height:'
-								+height+'"></div></div>');
+							+add_html+'</div><div draggable="true" class="block span6" style="height:'
+							+height+'"></div></div>');
 				}
 				// 模拟点击
 				$('.basic .row-fluid .block a.custombtn:last').attr('id', "new"+newid).trigger('click');
