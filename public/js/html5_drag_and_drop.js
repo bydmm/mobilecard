@@ -58,10 +58,9 @@
 		addDragAndDrop('.block');
 
 		function Block(id, order) {
-			return eval({"title":"NEW","link":"","id":id,"order":order,"border_radius":"15%","backgroundColor":"rgb(255, 122, 0)","summery":""});
+			return eval({"title":"NEW","link":"","id":id,"order":order,"border_radius":"15%","backgroundColor":"rgb(255, 122, 0)"," ":""});
 		}
 		
-		var css = new Object; // 保存按钮的css信息的对象
 		var newid = 0;
 		$('#add').click(
 			function(){
@@ -117,10 +116,6 @@
 			if (0 == gradient.length) {
 				return false;
 			}
-
-			css.height = gradient.css('height');
-			css.line_height = gradient.css('line-height');
-			css.font_size = gradient.css('font-size');
 
 			var id = gradient.attr('id');
 			// 从数组中删除
