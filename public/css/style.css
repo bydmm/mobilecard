@@ -42,3 +42,8 @@ body .gradient{
   width: 128px;
 	cursor: pointer;
 }
+
+.candrag
+{
+	border: 5px dashed #CCCCCC;
+}

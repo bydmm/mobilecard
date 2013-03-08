@@ -3,6 +3,14 @@
 class IndexAction extends Action {
 	
 	public function index(){
+		$this->display();
+	}
+	
+	public function TechnicalSupport(){
+		$this->display();
+	}
+	
+	public function admin(){
 		$blocks = Array();
 		$block = new stdClass();
 		$block->title = 'INFO';
