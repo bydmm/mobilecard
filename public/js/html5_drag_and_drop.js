@@ -36,6 +36,8 @@
 				var tmp = dragSrcEl.html();
 				dragSrcEl.html($(this).html());
 				$(this).html(tmp);
+
+				removeRow();
 			}
 
 			return false;
@@ -56,6 +58,16 @@
 		}
 
 		addDragAndDrop('.block');
+
+		function removeRow(){
+			var row = $('.basic .row-fluid:gt(0)');
+				for (var i = row.length - 1; i >= 0; i--) {
+					var a = $(row[i]).find('a.custombtn');
+					if (0 == a.length) {
+						$(row[i]).remove();
+					}
+				}
+		}
 
 		function Block(id, order) {
 			return eval({"title":"NEW","link":"http://","id":id,"order":order,"border_radius":"15%","backgroundColor":"rgb(255, 122, 0)"," ":""});
