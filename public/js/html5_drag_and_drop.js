@@ -135,7 +135,7 @@
 			}
 
 			// 模拟点击
-			$('.basic .row-fluid .block a:last').trigger('click');
+			$('.basic .row-fluid:first').trigger('click');
 		});
 
 	});
