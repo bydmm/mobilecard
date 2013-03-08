@@ -76,11 +76,10 @@
 		
 		//form
 		function reloadForm(self)
-		{
+		{	
+				
 			currentBlockIndex = self.attr('id');
 			findBlock(currentBlockIndex);
-			
-			$('.editor-link').val(currentBlock.link);
 			
 			//editor-title
 			$('.editor-title').val(currentBlock.title);
@@ -92,13 +91,152 @@
 			});
 			
 			//editor-link
-			$('.editor-link').val(currentBlock.link);
+			var link = currentBlock.link;
+			var type = '';
+			if(link.match(/^tel:\/\//)){
+				type = 'tel';
+			}; 
+			if(link.match(/^http:\/\//)){
+				type = 'hyperlink';
+			};
+			if(link.match(/^https:\/\//)){
+				type = 'hyperlink';
+			};
+			if(link.match(/^https:\/\/maps.google.com/)){
+				type = 'map';
+			};
+			if(link.match(/^mailto:/)){
+				type = 'mail';
+			};
+			if(link.match(/#summery/)){
+				type = 'summery';
+			};
+			
+			var linkType = 'hyperlink';
+			var editor;
+			var inputType = 'text';
+			switch(type){
+				case 'tel':
+					linkType = 'tel';
+					link = link.replace(/^tel:\/\//, '');
+					$('.content-group').hide(300);
+					$('.editor-link').show(300).val(link);
+					break;
+				
+				case 'hyperlink':
+					linkType = 'hyperlink';
+					inputType = 'url'
+					$('.content-group').hide(300);
+					$('.editor-link').show(300).val(currentBlock.link);
+					break;
+					
+				case 'mail':
+					linkType = 'mail';
+					inputType = 'email'
+					link = link.replace(/^mailto:/, '');
+					$('.content-group').hide(300);
+					$('.editor-link').show(300).val(link);
+					break;
+				
+				case 'map':
+					linkType = 'map';
+					inputType = 'url'
+					$('.content-group').hide(300);
+					$('.editor-link').show(300).val(link);
+					break;
+				
+				case 'summery':
+					linkType = 'summery';
+					link = link.replace(/^#summery/, '');
+					$('.editor-link').hide(300);
+					$('.content-group').show(300);
+					editor = KindEditor.create('#content', {
+						width : '100%',
+						minHeight : '200px',
+						resizeType : 0,
+						allowPreviewEmoticons : false,
+						allowImageUpload : false,
+						items : [
+							'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+							'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+							'insertunorderedlist', '|', 'emoticons', 'image', 'link'],
+						afterChange : function() {
+							var content = editor.html();
+							currentBlock.summery = content;
+							currentBlock.link = "#summery-" + currentBlock.id;
+							storeBlocks();
+						}
+					});
+					break;				
+			}
+			$('#link-type').val(linkType);
+			$(".editor-link").prop('type',inputType);
+			
+			var prefix = '';
+			$('#link-type').change(function(){
+				var linkType = $(this).val();
+				var inputType = 'text';
+				switch(linkType){
+					case 'tel':
+						prefix = "tel://";
+						$('.content-group').hide(300);
+						$('.editor-link').show(300);
+						break;
+
+					case 'hyperlink':
+						inputType = 'url'
+						$('.content-group').hide(300);
+						$('.editor-link').show(300);
+						break;
+
+					case 'mail':
+						inputType = 'email'
+						prefix = "mailto:";
+						$('.content-group').hide(300);
+						$('.editor-link').show(300);
+						break;
+
+					case 'map':
+						inputType = 'url'
+						$('.content-group').hide(300);
+						$('.editor-link').show(300);
+						break;
+
+					case 'summery':
+						$('.editor-link').hide(300);
+						$('.content-group').show(300);
+						editor = KindEditor.create('#content', {
+							width : '100%',
+							minHeight : '200px',
+							resizeType : 0,
+							allowPreviewEmoticons : false,
+							allowImageUpload : false,
+							items : [
+								'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+								'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+								'insertunorderedlist', '|', 'emoticons', 'image', 'link'],
+							afterChange : function() {
+								var content = editor.html();
+								currentBlock.summery = content;
+								currentBlock.link = "#summery-" + currentBlock.id;
+								storeBlocks();
+							}
+						});
+						break;				
+				}
+				$(".editor-link").prop('type',inputType);
+			});
+			
 			$(".editor-link").keyup(function(){
 				var link = $(this).val();
 			  $('#'+currentBlockIndex).html(title);
-				currentBlock.link = link;
+				currentBlock.link = prefix+link;
 				storeBlocks();
 			});
+			
+			
+			
+
 
 			//editor
 			//alert(currentBlock.border_radius);

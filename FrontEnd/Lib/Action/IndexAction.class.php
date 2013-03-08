@@ -6,12 +6,13 @@ class IndexAction extends Action {
 		$blocks = Array();
 		$block = new stdClass();
 		$block->title = 'INFO';
-		$block->link = '##';
+		$block->link = '#summery';
 		$block->id = '1';
 		$block->order = '1';
 		$block->border_radius = "15";
 		$block->backgroundColor = ('rgb(255, 122, 0)');
 		$block->fontfamily = 'Helvetica Neue, Helvetica, Arial, sans-serif';
+		$block->summery = '';
 		$blocks[] = $block;
 		$block = new stdClass();
 		$block->title = 'TEL';
@@ -21,6 +22,7 @@ class IndexAction extends Action {
 		$block->border_radius = "15";
 		$block->backgroundColor = ('rgb(255, 122, 0)');
 		$block->fontfamily = 'Helvetica Neue, Helvetica, Arial, sans-serif';
+		$block->summery = '';
 		$blocks[] = $block;
 		$block = new stdClass();
 		$block->title = 'MAIL';
@@ -30,6 +32,7 @@ class IndexAction extends Action {
 		$block->border_radius = "15";
 		$block->backgroundColor = ('rgb(255, 122, 0)');
 		$block->fontfamily = 'Helvetica Neue, Helvetica, Arial, sans-serif';
+		$block->summery = '';
 		$blocks[] = $block;
 		$block = new stdClass();
 		$block->title = 'ROUTE';
@@ -39,6 +42,7 @@ class IndexAction extends Action {
 		$block->border_radius = "15";
 		$block->backgroundColor = ('rgb(255, 122, 0)');
 		$block->fontfamily = 'Helvetica Neue, Helvetica, Arial, sans-serif';
+		$block->summery = '';
 		$blocks[] = $block;
 		$this->assign('blocks',$blocks);
 		$this->display();

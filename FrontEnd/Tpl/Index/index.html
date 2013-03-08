@@ -125,19 +125,7 @@
 								</div>
 				      </div>
 				    </div>
-				    <div class="control-group">
-				      <label class="control-label" for="input01">Title</label>
-				      <div class="controls">
-									<input type="text" class="input-medium editor-title" name="title" value="">
-				      </div>
-				    </div>			
-				    <div class="control-group">
-				      <label class="control-label" for="input01">Link</label>
-				      <div class="controls">
-									<input type="text" class="input-medium editor-link" name="link" value="">
-				      </div>
-				    </div>
-				    <div class="control-group">
+						<div class="control-group">
 				      <label class="control-label" for="input01">Mobile Web Safe Fonts</label>
 				      <div class="controls">
 									<select name="font-family" id="editor-font-family">
@@ -152,7 +140,31 @@
 									</select>
 				      </div>
 				    </div>
-						<div clas
+				    <div class="control-group">
+				      <label class="control-label" for="input01">Title</label>
+				      <div class="controls">
+									<input type="text" class="input-medium editor-title" name="title" value="">
+				      </div>
+				    </div>			
+				    <div class="control-group">
+				      <label class="control-label" for="">Link</label>
+				      <div class="controls">
+									<select name="" class="span3" id="link-type">
+										<option value="tel">Tel</option>
+										<option value="mail">Mail</option>
+										<option value="map">Map</option>
+										<option value="hyperlink">Hyperlink</option>
+										<option value="summery">Summery</option>
+									</select>
+									<input type="text" class="input-big editor-link" name="link" value="">
+				      </div>
+				    </div>
+						<div class="control-group content-group">
+				      <label class="control-label" for="">Content</label>
+				      <div class="controls">
+								<textarea id="content"></textarea>
+				      </div>
+				    </div>
 						<div class="control-group">
 				      <div class="controls">
 								<a id="block-remove" class="btn btn-danger ">Remove</a>

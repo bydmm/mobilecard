@@ -24,4 +24,5 @@ KindEditor.ready(function(K) {
 		var title = $(this).val();
 		$('.preview .pagetitle').html(title);
 	});
+	
 });
