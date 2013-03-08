@@ -140,13 +140,9 @@
 				}
 			}		
 			
-			var row = gradient.parent('.block').parent('.row-fluid');
-			// 如果该行只剩一个 则将该行删除
-			if (1 == row.find('a.custombtn').length) {
-				row.remove();
-			} else { // 否则只将选中的删除
-				gradient.remove();
-			}
+			// 清理html
+			gradient.remove();
+			removeRow();
 
 			// 模拟点击
 			$('.basic .row-fluid:first').trigger('click');
