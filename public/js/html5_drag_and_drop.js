@@ -36,6 +36,8 @@
 				var tmp = dragSrcEl.html();
 				dragSrcEl.html($(this).html());
 				$(this).html(tmp);
+
+				removeRow();
 			}
 
 			return false;
@@ -57,11 +59,20 @@
 
 		addDragAndDrop('.block');
 
+		function removeRow(){
+			var row = $('.basic .row-fluid:gt(0)');
+				for (var i = row.length - 1; i >= 0; i--) {
+					var a = $(row[i]).find('a.custombtn');
+					if (0 == a.length) {
+						$(row[i]).remove();
+					}
+				}
+		}
+
 		function Block(id, order) {
-			return eval({"title":"NEW","link":"","id":id,"order":order,"border_radius":"15%","backgroundColor":"rgb(255, 122, 0)","summery":""});
+			return eval({"title":"NEW","link":"http://","id":id,"order":order,"border_radius":"15%","backgroundColor":"rgb(255, 122, 0)"," ":""});
 		}
 		
-		var css = new Object; // 保存按钮的css信息的对象
 		var newid = 0;
 		$('#add').click(
 			function(){
@@ -94,15 +105,17 @@
 					+'" class="custombtn">'
 					+ blocks[index-1].title +'</a>';
 					
-				switch ($('.basic .row-fluid:last .block').length){
+				switch ($('.basic .row-fluid:last .block a.custombtn').length){
 					case 1: // 在行中新增
 						$('.basic .row-fluid:last .block:last')
-							.after('<div draggable="true" class="block span6">'+add_html+'</div>');
+							.html(add_html);
 						break;
 					case 2: // 新增一行
 					default:
 						$('.basic .row-fluid:last')
-							.after('<div class="row-fluid"><div draggable="true" class="block span6">'+add_html+'</div></div>');
+							.after('<div class="row-fluid"><div draggable="true" class="block span6">'
+							+add_html+'</div><div draggable="true" class="block span6" style="height:'
+							+height+'"></div></div>');
 				}
 				// 模拟点击
 				$('.basic .row-fluid .block a.custombtn:last').attr('id', "new"+newid).trigger('click');
@@ -118,10 +131,6 @@
 				return false;
 			}
 
-			css.height = gradient.css('height');
-			css.line_height = gradient.css('line-height');
-			css.font_size = gradient.css('font-size');
-
 			var id = gradient.attr('id');
 			// 从数组中删除
 			for (var i = blocks.length - 1; i >= 0; i--) {
@@ -131,16 +140,12 @@
 				}
 			}		
 			
-			var row = gradient.parent('.block').parent('.row-fluid');
-			// 如果该行只剩一个 则将该行删除
-			if (1 == row.find('a.custombtn').length) {
-				row.remove();
-			} else { // 否则只将选中的删除
-				gradient.remove();
-			}
+			// 清理html
+			gradient.remove();
+			removeRow();
 
 			// 模拟点击
-			$('.basic .row-fluid .block a:last').trigger('click');
+			$('.basic .row-fluid:first').trigger('click');
 		});
 
 	});
