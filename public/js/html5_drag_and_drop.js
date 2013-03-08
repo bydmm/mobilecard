@@ -58,7 +58,7 @@
 		addDragAndDrop('.block');
 
 		function Block(id, order) {
-			return eval({"title":"NEW","link":"","id":id,"order":order,"border_radius":"15%","backgroundColor":"rgb(255, 122, 0)"," ":""});
+			return eval({"title":"NEW","link":"http://","id":id,"order":order,"border_radius":"15%","backgroundColor":"rgb(255, 122, 0)"," ":""});
 		}
 		
 		var newid = 0;
