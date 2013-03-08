@@ -41,14 +41,31 @@
 			// 	'swing'
 			// );
 		}
-		//
+		
+		
+		
+		$('.preview .header').click(function(){
+			$('#headfrom').show(300);
+			$('#blockfrom').hide(300);
+			
+			$('.gradient').removeClass('gradient');
+			$(this).addClass('gradient');
+			
+		});
+		
+		$('.preview .header').click();
+		
 		$('a.custombtn').live('click', function(){
 			return preview;
 		});
 		
 		$('a.custombtn').live('click', function(){
+			
+			$('#blockfrom').show(300);
+			$('#headfrom').hide(300);
+			
 			var self = $(this);	
-			$('a.custombtn').removeClass('gradient');
+			$('.gradient').removeClass('gradient');
 			self.addClass('gradient');
 			reloadForm(self);
 		});
@@ -158,7 +175,7 @@
 			}
 		}
 		
-		$('#'+currentBlockIndex).click();
+		
 		
 		
 		

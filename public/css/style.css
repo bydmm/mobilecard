@@ -1,3 +1,6 @@
+.header{
+	cursor:pointer;
+}
 a.custombtn:hover{
 	text-decoration: none;
 }
@@ -19,7 +22,7 @@ a.custombtn{
 	text-align:center;
 }
 
-body a.gradient{
+body .gradient{
 	box-shadow:1px 1px 15px #000;
 
 }
