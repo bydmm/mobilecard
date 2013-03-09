@@ -34,7 +34,7 @@
 								Save & Exit <b class="caret"></b>
 							</a>
               <ul class="dropdown-menu">
-								<li><a href="#">Save</a></li>
+								<li><a id="saveSite" href="#">Save</a></li>
 								<li class="divider"></li>
                 <li><a href="#">Logout</a></li>
               </ul>
@@ -59,7 +59,6 @@
 					<?php for($i=0; $i < count($blocks); $i = $i + 2 ): ?>
 						<?php $first = $blocks[$i]; ?>
 						<?php $next = $blocks[$i+1]; ?>
-						<?php if(!$first) break;?>
 						<div class="row-fluid">
 							<div draggable="true" class="block span6" >
 								<a 

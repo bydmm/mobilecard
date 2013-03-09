@@ -14,9 +14,24 @@ class IndexAction extends Action {
 	
 	public function admin(){
 		$blocksModel = D('Blocks');
-		$blocks = $blocksModel->data();
+		$blocks = $blocksModel->select();
+		$blocks = $blocksModel->arrayObject($blocks);
+		if(!$blocks){
+			$blocks = array();
+		}
 		$this->assign('blocks',$blocks);
 		$this->display();
+	}
+	
+	public function saveSite(){
+		$blocks = $_POST['blocks'];
+		foreach($blocks as $block){
+			$block['id'] = '';
+		}
+		$blocksModel = D('Blocks');
+		$blocksModel->query('DELETE FROM pmc_blocks WHERE 1');
+		$blocksModel->addAll($blocks);
+		exit;
 	}
 	
 	public function login()

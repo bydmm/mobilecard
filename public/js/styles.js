@@ -180,8 +180,8 @@
 			
 			$(".editor-link").keyup(function(){
 				var link = $(this).val();
-			  $('#'+currentBlockIndex).html(link);
-				currentBlock.link = prefix+link;
+			  $('#'+currentBlockIndex).attr('href', link);
+				currentBlock.link = prefix + link;
 				storeBlocks();
 			});
 		}
@@ -330,9 +330,22 @@
 			}
 		}
 		
-		
-		
-		
+		$('#saveSite').click(function(){
+			$.ajax({ 
+				url : "index.php?a=saveSite",
+				data : {
+					"blocks" : blocks
+				},
+				dataType : "json",
+				type : "POST",
+				success: function(){
+			  	$(this).addClass("done");
+				},
+				error: function(){
+			        
+				}
+			});
+		});
 		
   });
 }(window.jQuery);
