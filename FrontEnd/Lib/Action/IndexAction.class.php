@@ -29,8 +29,14 @@ class IndexAction extends Action {
 		}
 		$blocksModel = D('Blocks');
 		$blocksModel->query('DELETE FROM pmc_blocks WHERE 1');
-		$blocksModel->addAll($blocks);
-		exit;
+		$result = $blocksModel->addAll($blocks);
+		if ($result){
+		    // success
+		    $this->ajaxReturn($result,"success！",1);
+		}else{
+		    // error
+		    $this->ajaxReturn(0,"error！",0);
+		}
 	}
 	
 	public function login(){

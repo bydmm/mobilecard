@@ -331,6 +331,32 @@
 		}
 		
 		$('#saveSite').click(function(){
+
+			
+			var loading = true;
+			$('#myModal').modal({
+				keyboard: false
+			}).on('hide', function(){
+				if(loading){
+					return false;
+				}
+			});
+			var $bar = $('.bar');
+			$bar.width(0);
+			$bar.text('');
+			var progress = setInterval(function() {
+				var width = parseInt($bar.width());
+		    if (width == 530) {
+		        clearInterval(progress);
+						$bar.text('Success!');
+		        //$('.progress').removeClass('active');
+		    } else {
+						width = width +53
+		        $bar.width(width);
+						var text = width /53 * 10 + "%" ;
+						$bar.text(text);
+		    }
+			}, 800);
 			$.ajax({ 
 				url : "index.php?a=saveSite",
 				data : {
@@ -339,13 +365,17 @@
 				dataType : "json",
 				type : "POST",
 				success: function(){
-			  	$(this).addClass("done");
+			  	loading = false;
 				},
 				error: function(){
-			        
+			    loading = false;
+					$bar.text('error');
 				}
 			});
 		});
+		
+
+
 		
   });
 }(window.jQuery);
