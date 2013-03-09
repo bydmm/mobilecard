@@ -5,13 +5,13 @@
 	<title>demo</title>
 	<meta name="generator" content="TextMate http://macromates.com/">
 	<meta name="author" content="Kyoma Houohin">
-	<link rel="stylesheet" href="<?php echo CSS?>/bootstrap.css" type="text/css" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="<?php echo CSS?>/style.css" type="text/css" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="<?php echo CSS?>/slider.css" type="text/css" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="<?php echo CSS?>/colorpicker.css" type="text/css" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="<?php echo CSS?>/useradmin.css" type="text/css" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="<?php echo CSS?>/html5_drag_and_drop.css" type="text/css" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="<?php echo EDITOR?>/themes/default/default.css" />
+	<link rel="stylesheet" href="__PUBLIC__/css/bootstrap.css" type="text/css" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="__PUBLIC__/css/style.css" type="text/css" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="__PUBLIC__/css/slider.css" type="text/css" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="__PUBLIC__/css/colorpicker.css" type="text/css" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="__PUBLIC__/css/useradmin.css" type="text/css" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="__PUBLIC__/css/html5_drag_and_drop.css" type="text/css" title="no title" charset="utf-8">
+	<link rel="stylesheet" href="__PUBLIC__/editor/themes/default/default.css" />
 	<!-- Date: 2013-03-02 -->
 </head>
 <body>
@@ -36,7 +36,7 @@
               <ul class="dropdown-menu">
 								<li><a id="saveSite" href="#">Save</a></li>
 								<li class="divider"></li>
-                <li><a href="#">Logout</a></li>
+                <li><a href="__URL__/logout">Logout</a></li>
               </ul>
             </li>
           </ul>
@@ -52,7 +52,7 @@
 				<div class="basic">
 					<div class="row-fluid header">
 						<span class="span4" >
-							<a href="##"><img class="logo" src="<?php echo IMAGES ?>/logo.png"/></a>
+							<a href="##"><img class="logo" src="__PUBLIC__/images/logo.png"/></a>
 						</span>
 						<h3 class="pagetitle span8" >Fysiotherapie Boxman</h3>
 					</div>
@@ -196,14 +196,14 @@
 		var blocks = eval('<?php echo json_encode($blocks);?>');
 		var currentBlockIndex = "1";
 	</script>
-	<script type="text/javascript" src="<?php echo JS ?>/jQuery.js"></script>
-	<script type="text/javascript" src="<?php echo JS ?>/bootstrap.js"></script>
-	<script type="text/javascript" src="<?php echo JS ?>/styles.js"></script>
-	<script type="text/javascript" src="<?php echo JS ?>/bootstrap-slider.js"></script>
-	<script type="text/javascript" src="<?php echo JS ?>/bootstrap-colorpicker.js"></script>
-	<script type="text/javascript" src="<?php echo JS ?>/html5_drag_and_drop.js"></script>
-	<script type="text/javascript" src="<?php echo EDITOR ?>/kindeditor.js"></script>
-	<script type="text/javascript" src="<?php echo EDITOR ?>/lang/en.js"></script>
-	<script type="text/javascript" src="<?php echo JS ?>/editor.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/jQuery.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/bootstrap.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/styles.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/bootstrap-slider.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/bootstrap-colorpicker.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/html5_drag_and_drop.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/editor/kindeditor.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/editor/lang/en.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/editor.js"></script>
 </body>
 </html>

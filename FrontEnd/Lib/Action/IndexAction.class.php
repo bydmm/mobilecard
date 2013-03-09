@@ -1,9 +1,6 @@
 <?php
-// 本类由系统自动生成，仅供测试用途
 class IndexAction extends Action {
-	
-	
-	
+
 	public function index(){
 		$this->display();
 	}
@@ -13,6 +10,8 @@ class IndexAction extends Action {
 	}
 	
 	public function admin(){
+		$this->isLogin();
+
 		$blocksModel = D('Blocks');
 		$blocks = $blocksModel->select();
 		$blocks = $blocksModel->arrayObject($blocks);
@@ -34,22 +33,52 @@ class IndexAction extends Action {
 		exit;
 	}
 	
-	public function login()
-	{
-		$user = D('User');
-		if($user->login()){
-			redirect('index.php?a=admin', 0, '...');
-		}
-		
+	public function login(){
+		// 用户已经登陆
+		if (session('uid')){
+    		$this->success('You have already landed', 'admin');
+    	}else {
+    		$this->display();
+    	}
 	}
 	
-	public function checkLogin()
-	{
-		$user = D('User');
-		$user->checkLogin();
-		if($user->login()){
-			redirect('index.php?a=admin', 0, '...');
-		}
-		
+	public function checkLogin(){
+		//用户对象实例化
+		$User = D('Users');
+
+		//取得表单提交的账号与密码
+    	$vo = $User->create();
+
+		if(!$vo){
+    		$this->error('Error');
+    	} else {
+    		$name = $vo['name'];
+    		$password = $vo['password'];
+    		//$password = md5($vo['password']+'key');
+    		
+    		//查询数据库中的账号与密码
+    		$User->where("`name`='$name'")->find(); 
+    		
+    		if ($name == $User->name && $password == $User->password){
+    			//记录用户登陆
+    			session('uid', $User->id);
+    			session('name', $name);
+    			$this->success('Success', 'admin');
+    		}else{
+    			$this->error('Error');
+    		}
+    	}
 	}	
+
+	public function isLogin(){
+    	if (!session('uid')){
+    		$this->error('Please Login', 'login');
+    	}
+	}
+
+	public function logout(){
+    	session('uid', null);
+    	session('name', null);
+    	$this->success('Logout', 'login');
+    }
 }
