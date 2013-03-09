@@ -42,7 +42,7 @@ class IndexAction extends Action {
 	public function login(){
 		// 用户已经登陆
 		if (session('uid')){
-    		$this->success('You have already landed', 'admin');
+    		$this->success('You have already landed', '__URL__/admin');
     	}else {
     		$this->display();
     	}
@@ -69,7 +69,7 @@ class IndexAction extends Action {
     			//记录用户登陆
     			session('uid', $User->id);
     			session('name', $name);
-    			$this->success('Success', 'admin');
+    			$this->success('Success', '__URL__/admin');
     		}else{
     			$this->error('Error');
     		}
@@ -78,13 +78,13 @@ class IndexAction extends Action {
 
 	public function isLogin(){
     	if (!session('uid')){
-    		$this->error('Please Login', 'login');
+    		$this->error('Please Login', '__URL__/login');
     	}
 	}
 
 	public function logout(){
     	session('uid', null);
     	session('name', null);
-    	$this->success('Logout', 'login');
+    	$this->success('Logout', '__URL__/login');
     }
 }
