@@ -2,6 +2,10 @@
 class IndexAction extends Action {
 
 	public function index(){
+		$blocksModel = D('Blocks');
+		$blocks = $blocksModel->select();
+		$blocks = $blocksModel->arrayObject($blocks);
+		$this->assign('blocks',$blocks);
 		$this->display();
 	}
 	
