@@ -24,18 +24,19 @@ class IndexAction extends Action {
 	
 	public function saveSite(){
 		$blocks = $_POST['blocks'];
-		foreach($blocks as $block){
-			$block['id'] = '';
+		foreach($blocks as $key=>$block){
+			unset($blocks[$key]['id']);
 		}
+
 		$blocksModel = D('Blocks');
-		$blocksModel->query('DELETE FROM pmc_blocks WHERE 1');
+		$blocksModel->where('id>0')->delete();
 		$result = $blocksModel->addAll($blocks);
 		if ($result){
 		    // success
-		    $this->ajaxReturn($result,"success！",1);
+		    $this->ajaxReturn($result,"success！", 1);
 		}else{
 		    // error
-		    $this->ajaxReturn(0,"error！",0);
+		    $this->ajaxReturn(0,"error！", 0);
 		}
 	}
 	
