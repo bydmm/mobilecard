@@ -9,5 +9,10 @@ return array(
     'DB_PWD'    => 'admin', // 密码
     'DB_PORT'   => 3306, // 端口
     'DB_PREFIX' => 'pmc_', // 数据库表前缀 
+
+    //默认错误跳转对应的模板文件
+	'TMPL_ACTION_ERROR' => APP_PATH . 'Tpl/dispatch_jump.tpl',
+	//默认成功跳转对应的模板文件
+	'TMPL_ACTION_SUCCESS' => APP_PATH . 'Tpl/dispatch_jump.tpl'
 );
 ?>
