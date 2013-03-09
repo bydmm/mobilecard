@@ -59,6 +59,7 @@
 					<?php for($i=0; $i < count($blocks); $i = $i + 2 ): ?>
 						<?php $first = $blocks[$i]; ?>
 						<?php $next = $blocks[$i+1]; ?>
+						<?php if(!$first) break;?>
 						<div class="row-fluid">
 							<div draggable="true" class="block span6" >
 								<a 
@@ -67,8 +68,8 @@
 									class="custombtn"
 									style="
 										border-radius:<?php echo $first->border_radius;?>%;
-										background-color:<?php echo $first->backgroundColor;?>;
-										font-family:<?php echo $first->fontfamily;?>;
+										background-color:<?php echo $first->background_color;?>;
+										font-family:<?php echo $first->font_family;?>;
 									"
 									href="<?php echo $first->link; ?>">
 									<?php echo $first->title; ?>
@@ -82,8 +83,8 @@
 									class="custombtn" 
 									style="
 										border-radius:<?php echo $next->border_radius;?>%;
-										background-color:<?php echo $next->backgroundColor;?>;
-										font-family:<?php echo $next->fontfamily;?>;
+										background-color:<?php echo $next->background_color;?>;
+										font-family:<?php echo $next->font_family;?>;
 									"
 									href="<?php echo $next->link; ?>">
 									<?php echo $next->title; ?>
@@ -91,6 +92,7 @@
 							</div>
 							<?php endif;?>
 						</div>
+						
 					<?php endfor;?>		
 				</div>
 				<div class="row-fluid">

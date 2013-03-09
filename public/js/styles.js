@@ -255,13 +255,13 @@
 		function colorpickerHandle()
 		{
 			//colorpicker
-			$('.editor-background-color #colorpicker').attr({'data-color': currentBlock.backgroundColor });
-			$('.editor-background-color i').css({'background-color': currentBlock.backgroundColor });
+			$('.editor-background-color #colorpicker').attr({'data-color': currentBlock.background_color });
+			$('.editor-background-color i').css({'background-color': currentBlock.background_color });
 			$('#colorpicker').colorpicker({
 			}).on('changeColor', function(ev){
-				var backgroundColor = ev.color.toHex();
-			  $('#'+currentBlockIndex).css({'background-color': backgroundColor });
-				currentBlock.backgroundColor = backgroundColor;
+				var background_color = ev.color.toHex();
+			  $('#'+currentBlockIndex).css({'background-color': background_color });
+				currentBlock.background_color = background_color;
 				storeBlocks();
 			});			
 		}
@@ -269,11 +269,11 @@
 		function editorFontFamilyHandle()
 		{
 			//editor-font-family
-			$('#editor-font-family').val(currentBlock.fontfamily);
+			$('#editor-font-family').val(currentBlock.font_family);
 			$('#editor-font-family').change(function(){
-				var font = $(this).val();
-				currentBlock.fontfamily  = font;
-				$('#'+currentBlockIndex).css({'font-family': font });
+				var font_family = $(this).val();
+				currentBlock.font_family  = font_family;
+				$('#'+currentBlockIndex).css({'font-family': font_family });
 				storeBlocks();
 			});
 		}

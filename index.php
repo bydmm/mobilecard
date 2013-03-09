@@ -5,7 +5,7 @@ define('APP_PATH','./FrontEnd/');
 define('APP_DEBUG', true);
 
 // 采用rest模式运行 
-define('MODE_NAME', 'rest');
+// define('MODE_NAME', 'rest');
 
 //url常量
 define('PUBLIC', 'Public/');
