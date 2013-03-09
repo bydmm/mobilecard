@@ -70,7 +70,16 @@
 		}
 
 		function Block(id, order) {
-			return eval({"title":"NEW","link":"http://","id":id,"order":order,"border_radius":"15%","backgroundColor":"rgb(255, 122, 0)"," ":""});
+			return eval({
+				"title":"NEW",
+				"link":"http://",
+				"id":id,
+				"order":order,
+				"border_radius":"15%",
+				"background_color":"rgb(255, 122, 0)",
+				"font_family":"",
+				"summery":""
+			});
 		}
 		
 		var newid = 0;
