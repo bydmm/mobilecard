@@ -116,11 +116,13 @@
 					
 				switch ($('.basic .row-fluid:last .block a.custombtn').length){
 					case 1: // 在行中新增
+						console.log(1);
 						$('.basic .row-fluid:last .block:last')
 							.html(add_html);
 						break;
 					case 2: // 新增一行
 					default:
+					console.log(2);
 						$('.basic .row-fluid:last')
 							.after('<div class="row-fluid"><div draggable="true" class="block span6">'
 							+add_html+'</div><div draggable="true" class="block span6" style="height:'
