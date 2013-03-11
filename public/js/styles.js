@@ -31,23 +31,20 @@
 				'height': width + 'px'
 			});
 			
-			// $('a.custombtn').animate(
-			// 	{
-			// 		'height': width + 'px',
-			// 		'line-height': width + 'px',
-			// 		'font-size': width/4 + 'px'
-			// 	},
-			// 	'1',
-			// 	'swing'
-			// );
+		}
+		var formtabs = $('.formtabs');
+		function showFormTabs(tabid){
+			formtabs.each(function(){
+				if( tabid == $(this).attr('id') ){
+					$(this).show(300);
+				}else{
+					$(this).hide(300);
+				}
+			});
 		}
 		
-		
-		
 		$('.preview .header').click(function(){
-			$('#headfrom').show(300);
-			$('#blockfrom').hide(300);
-			
+			showFormTabs('headfrom');
 			$('.gradient').removeClass('gradient');
 			$(this).addClass('gradient');
 			
@@ -55,15 +52,39 @@
 		
 		$('.preview .header').click();
 		
+		$('.preview .footer').click(function(){
+			showFormTabs('footerform');
+			footerEditorHandle();
+			$('.gradient').removeClass('gradient');
+			$(this).addClass('gradient');
+		});
+		
+		function footerEditorHandle()
+		{
+			var footereditor = KindEditor.create('#footer', {
+				width : '100%',
+				minHeight : '200px',
+				resizeType : 0,
+				allowPreviewEmoticons : false,
+				allowImageUpload : false,
+				items : [
+					'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+					'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+					'insertunorderedlist', '|', 'emoticons', 'image', 'link'],
+				afterChange : function() {
+					var content = footereditor.html();
+					$('.preview .footer').html(content)
+					site['footer'] = content;
+				}
+			});
+		}
+		
 		$('a.custombtn').live('click', function(){
 			return preview;
 		});
 		
 		$('a.custombtn').live('click', function(){
-			
-			$('#blockfrom').show(300);
-			$('#headfrom').hide(300);
-			
+			showFormTabs('blockfrom');	
 			var self = $(this);	
 			$('.gradient').removeClass('gradient');
 			self.addClass('gradient');
@@ -343,7 +364,8 @@
 			$.ajax({ 
 				url : "index.php?a=saveSite",
 				data : {
-					"blocks" : blocks
+					"blocks" : blocks,
+					"site" : site
 				},
 				dataType : "json",
 				type : "POST",
@@ -361,7 +383,7 @@
 		});
 		
 		function message(msg){
-			$('#myModal myModalLabel').text(msg);
+			$('#myModal myModalLabel').html(msg);
 		}
   });
 }(window.jQuery);

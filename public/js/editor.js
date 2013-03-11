@@ -11,6 +11,7 @@ KindEditor.ready(function(K) {
 				clickFn : function(url, title, width, height, border, align) {
 					K('#url3').val(url);
 					K('img.logo').attr('src',url);
+					site['logo'] = url;
 					editor.hideDialog();
 				}
 			});
@@ -19,10 +20,11 @@ KindEditor.ready(function(K) {
 	});
 	
 	//pagetitle
-	$("#pagetitle").val($('.preview .pagetitle').html());
+	$("#pagetitle").val(site['title']);
 	$("#pagetitle").keyup(function(){
 		var title = $(this).val();
 		$('.preview .pagetitle').html(title);
+		site['title'] = title;
 	});
 	
 });

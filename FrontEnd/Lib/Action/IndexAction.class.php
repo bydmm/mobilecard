@@ -26,6 +26,8 @@ class IndexAction extends Action {
 		if(!$blocks){
 			$blocks = array();
 		}
+		$siteModel = D('site');
+		$this->assign('site', $siteModel->find());
 		$this->assign('blocks',$blocks);
 		$this->display();
 	}

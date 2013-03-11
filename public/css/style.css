@@ -48,6 +48,12 @@ body .gradient{
 	border: 5px dashed #CCCCCC;
 }
 
+.footer
+{
+	cursor:pointer;
+	margin:10px 0;
+	text-align:center;
+}
 /*loading */
 #facebookG{
 	margin:0 auto;
