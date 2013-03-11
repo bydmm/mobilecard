@@ -6,6 +6,10 @@ class IndexAction extends Action {
 		$blocks = $blocksModel->select();
 		$blocks = $blocksModel->arrayObject($blocks);
 		$this->assign('blocks',$blocks);
+
+		$siteModel = D('site');
+		$this->assign('site', $siteModel->find());
+
 		$this->display();
 	}
 	
@@ -27,20 +31,25 @@ class IndexAction extends Action {
 	}
 	
 	public function saveSite(){
+		$site = array('title'=>'title', 'logo'=>'logo', 'footer'=>'footer');
+		foreach ($site as $key => $value) {
+			# code...
+		}
+
 		$blocks = $_POST['blocks'];
 		foreach($blocks as $key=>$block){
 			unset($blocks[$key]['id']);
 		}
 
 		$blocksModel = D('Blocks');
-		$blocksModel->where('id>0')->delete();
+		$blocksModel->where('id > 0')->delete();
 		$result = $blocksModel->addAll($blocks);
 		if ($result){
 		    // success
 		    $this->ajaxReturn($result,"success！", 1);
 		}else{
 		    // error
-		    $this->ajaxReturn(0,"error！", 0);
+		    $this->ajaxReturn(0, "error！", 0);
 		}
 	}
 	
