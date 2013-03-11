@@ -33,10 +33,10 @@ class IndexAction extends Action {
 	}
 	
 	public function saveSite(){
-		$site = array('title'=>'title', 'logo'=>'logo', 'footer'=>'footer');
-		foreach ($site as $key => $value) {
-			# code...
-		}
+		$site = $_POST['site'];
+		$siteModel = D('site');
+		$siteModel->where('id > 0')->delete();
+		$siteModel->add($site);
 
 		$blocks = $_POST['blocks'];
 		foreach($blocks as $key=>$block){
@@ -48,7 +48,7 @@ class IndexAction extends Action {
 		$result = $blocksModel->addAll($blocks);
 		if ($result){
 		    // success
-		    $this->ajaxReturn($result,"success！", 1);
+		    $this->ajaxReturn($result, "success！", 1);
 		}else{
 		    // error
 		    $this->ajaxReturn(0, "error！", 0);
