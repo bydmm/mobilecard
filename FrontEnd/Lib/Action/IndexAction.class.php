@@ -31,10 +31,10 @@ class IndexAction extends Action {
 	}
 	
 	public function saveSite(){
-		$site = array('title'=>'title', 'logo'=>'logo', 'footer'=>'footer');
-		foreach ($site as $key => $value) {
-			# code...
-		}
+		$site = $_POST['site'];
+		$siteModel = D('site');
+		$siteModel->where('id > 0')->delete();
+		$siteModel->add($site);
 
 		$blocks = $_POST['blocks'];
 		foreach($blocks as $key=>$block){
