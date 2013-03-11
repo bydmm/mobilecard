@@ -46,7 +46,7 @@ class IndexAction extends Action {
 		$result = $blocksModel->addAll($blocks);
 		if ($result){
 		    // success
-		    $this->ajaxReturn($result,"success！", 1);
+		    $this->ajaxReturn($result, "success！", 1);
 		}else{
 		    // error
 		    $this->ajaxReturn(0, "error！", 0);
