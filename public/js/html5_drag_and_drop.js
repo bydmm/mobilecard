@@ -60,7 +60,7 @@
 		addDragAndDrop('.block');
 
 		function removeRow(){
-			var row = $('.basic .row-fluid:gt(0)');
+			var row = $('.basic .row-item');
 				for (var i = row.length - 1; i >= 0; i--) {
 					var a = $(row[i]).find('a.custombtn');
 					if (0 == a.length) {
@@ -90,7 +90,7 @@
 				var line_height = width + 'px';
 				var font_size = width/4 + 'px';
 
-				var lastBlock = $('.basic .row-fluid .block a.custombtn:last');
+				var lastBlock = $('.basic .row-item .block a.custombtn:last');
 				// 如果页面被清空 
 				if (0 == lastBlock.length) {
 					var order = 0;
@@ -114,19 +114,19 @@
 					+'" class="custombtn">'
 					+ blocks[index-1].title +'</a>';
 					
-				switch ($('.basic .row-fluid:last .block a.custombtn').length){
+				switch ($('.basic .row-item:last .block a.custombtn').length){
 					case 1: // 在行中新增
-						$('.basic .row-fluid:last .block:last')
+						$('.basic .row-item:last .block:last')
 							.after('<div draggable="true" class="block span6">'+add_html+'</div>');
 						break;
 					case 2: // 新增一行
 					default:
-						$('.basic .row-fluid:last')
-							.after('<div class="row-fluid"><div draggable="true" class="block span6">'
+						$('.basic .row-item:last')
+							.after('<div class="row-fluid row-item"><div draggable="true" class="block span6">'
 							+add_html+'</div></div>');
 				}
 				// 模拟点击
-				$('.basic .row-fluid .block a.custombtn:last').attr('id', "new"+newid).trigger('click');
+				$('.basic .row-item .block a.custombtn:last').attr('id', "new"+newid).trigger('click');
 				newid++;
 				addDragAndDrop('.block');
 			}
@@ -153,7 +153,7 @@
 			removeRow();
 
 			// 模拟点击
-			$('.basic .row-fluid:first').trigger('click');
+			$('.basic .header').trigger('click');
 		});
 
 	});
