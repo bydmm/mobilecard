@@ -66,11 +66,7 @@
 				resizeType : 0,
 				allowPreviewEmoticons : false,
 				allowImageUpload : false,
-<<<<<<< HEAD
 				langType : 'en',
-=======
-				//langType : 'en', 
->>>>>>> 9ce5f9c468fd708270e0dad97bf9c4e06ac92c53
 				items : [
 					'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
 					'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
