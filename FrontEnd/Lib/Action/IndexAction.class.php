@@ -5,6 +5,16 @@ class IndexAction extends Action {
 		$blocksModel = D('Blocks');
 		$blocks = $blocksModel->select();
 		$blocks = $blocksModel->arrayObject($blocks);
+
+
+		
+		$pattern = "/^#summery/"; 
+		foreach ($blocks as $key => $value) {
+			if (preg_match($pattern, $value->link)) {
+				$blocks[$key]->link = "index.php?a=summery&id=$value->id";
+			}
+		}
+
 		$this->assign('blocks', $blocks);
 
 		$siteModel = D('site');
@@ -29,7 +39,7 @@ class IndexAction extends Action {
 
 	public function summery(){
 		$blocksModel = D('Blocks');
-		$blocks = $blocksModel->find('id'=>$_GET['id']);
+		$summery = $blocksModel->find($_GET['id']);
 		$this->assign('summery', $summery);
 
 		$this->display();

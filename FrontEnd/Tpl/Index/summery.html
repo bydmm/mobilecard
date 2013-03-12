@@ -14,10 +14,14 @@
 <body>
 	<div class="container">
 		<div class="page-header">
-		    <h1><?php echo $summery->title?></h1>
+		    <h1><?php echo $summery['title'];?></h1>
 		</div>
 		<div class="row">
-			<div class="span12"><?php echo $summery->summery?></div>
+			<div class="span12"><?php echo $summery['summery'];?></div>
+		</div>
+		<hr />
+		<div class="row">
+			<div class="span12"><a class="btn btn-large" href="index.php">Back</a></div>
 		</div>
 	</div>
 	<script type="text/javascript" src="__PUBLIC__/js/jQuery.js"></script>
