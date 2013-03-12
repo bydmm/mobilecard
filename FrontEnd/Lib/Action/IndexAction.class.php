@@ -10,10 +10,18 @@ class IndexAction extends Action {
 		$siteModel = D('site');
 		$site = $siteModel->find();
 
-		$str = $site['footer'];
 		$pattern = "/([a-z0-9\-_\.]+@[a-z0-9]+\.[a-z0-9\-_\.]+)/"; 
 		// 将邮箱替换为相应的链接
 		$site['footer'] = preg_replace($pattern, '<a href="mailto:\\1">\\1</a>', $site['footer']);
+
+		$pattern = "/([0-9]+-[0-9]+)/"; 		
+		// 将电话号码替换为相应的链接
+		$site['footer'] = preg_replace($pattern, '<a href="tel:\\1">\\1</a>', $site['footer']);
+
+		$pattern = "/([0-9]{7,})/"; 		
+		// 将电话号码替换为相应的链接
+		$site['footer'] = preg_replace($pattern, '<a href="tel:\\1">\\1</a>', $site['footer']);
+
 		$this->assign('site', $site);
 
 		$this->display();
@@ -98,7 +106,7 @@ class IndexAction extends Action {
     	}
 	}	
 
-	public function isLogin(){
+	private function isLogin(){
     	if (!session('uid')){
     		$this->error('Please Login', '__URL__/login');
     	}

@@ -67,6 +67,7 @@
 				resizeType : 0,
 				allowPreviewEmoticons : false,
 				allowImageUpload : false,
+				langType : 'en', 
 				items : [
 					'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
 					'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
@@ -215,6 +216,7 @@
 				resizeType : 0,
 				allowPreviewEmoticons : false,
 				allowImageUpload : false,
+				langType : 'en',
 				items : [
 					'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
 					'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
