@@ -126,7 +126,6 @@ KindEditor.ready(function(K) {
 		var link = currentBlock.link;
 		var linkType = 'hyperlink'; //link type select option val
 		var inputType = 'text'; //
-		console.log(link);
 
 		if(link.match(/^http(s)?:\/\/maps.google/)){
 			handleMap();

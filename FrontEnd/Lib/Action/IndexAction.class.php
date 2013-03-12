@@ -26,6 +26,14 @@ class IndexAction extends Action {
 
 		$this->display();
 	}
+
+	public function summery(){
+		$blocksModel = D('Blocks');
+		$blocks = $blocksModel->find('id'=>$_GET['id']);
+		$this->assign('summery', $summery);
+
+		$this->display();
+	}
 	
 	public function TechnicalSupport(){
 		$this->display();
