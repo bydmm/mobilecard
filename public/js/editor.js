@@ -1,18 +1,18 @@
 KindEditor.ready(function(K) {
-	var editor = K.editor({
+	var upload = K.editor({
 		allowFileManager : true,
 		langType : 'en'
 	});
 	K('#drag-images').click(function() {
-		editor.loadPlugin('image', function() {
-			editor.plugin.imageDialog({
+		upload.loadPlugin('image', function() {
+			upload.plugin.imageDialog({
 				showRemote : false,
 				imageUrl : K('#url3').val(),
 				clickFn : function(url, title, width, height, border, align) {
 					K('#url3').val(url);
 					K('img.logo').attr('src',url);
 					site['logo'] = url;
-					editor.hideDialog();
+					upload.hideDialog();
 				}
 			});
 		});

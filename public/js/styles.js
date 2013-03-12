@@ -2,7 +2,6 @@
   $(window).on('load', function () {
 		//define var
 		var preview = false;
-		var editor;
 		
 		Intialize();
 		//旋转重构	
@@ -67,13 +66,13 @@
 				resizeType : 0,
 				allowPreviewEmoticons : false,
 				allowImageUpload : false,
-				langType : 'en', 
+				langType : 'en',
 				items : [
 					'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
 					'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
 					'insertunorderedlist', '|', 'emoticons', 'image', 'link'],
 				afterChange : function() {
-					var content = footereditor.html();
+					var content = this.html();
 					$('.preview .footer').html(content)
 					site['footer'] = content;
 				}
@@ -207,10 +206,10 @@
 				storeBlocks();
 			});
 		}
-		
+		 
 		function KindEditorHandle()
 		{
-			editor = KindEditor.create('#content', {
+			var editor = KindEditor.create('#content', {
 				width : '100%',
 				minHeight : '200px',
 				resizeType : 0,
@@ -222,7 +221,7 @@
 					'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
 					'insertunorderedlist', '|', 'emoticons', 'image', 'link'],
 				afterChange : function() {
-					var content = editor.html();
+					var content = this.html();
 					currentBlock.summery = content;
 					currentBlock.link = "#summery-" + currentBlock.id;
 					storeBlocks();
