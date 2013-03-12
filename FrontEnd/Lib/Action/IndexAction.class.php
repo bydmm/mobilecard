@@ -11,7 +11,7 @@ class IndexAction extends Action {
 		$pattern = "/^#summery/"; 
 		foreach ($blocks as $key => $value) {
 			if (preg_match($pattern, $value->link)) {
-				$blocks[$key]->link = "index.php?a=summery&id=$value->id";
+				$blocks[$key]->link = U("Index/summery?id=$value->id");
 			}
 		}
 
