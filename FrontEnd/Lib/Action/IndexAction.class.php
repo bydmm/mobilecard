@@ -53,6 +53,7 @@ class IndexAction extends Action {
 		$siteModel->add($site);
 
 		$blocks = $_POST['blocks'];
+		//var_dump($blocks);
 		foreach($blocks as $key=>$block){
 			unset($blocks[$key]['id']);
 		}
