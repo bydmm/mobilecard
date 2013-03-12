@@ -5,8 +5,6 @@ class IndexAction extends Action {
 		$blocksModel = D('Blocks');
 		$blocks = $blocksModel->select();
 		$blocks = $blocksModel->arrayObject($blocks);
-
-
 		
 		$pattern = "/^#summery/"; 
 		foreach ($blocks as $key => $value) {
