@@ -247,7 +247,7 @@ KindEditor.ready(function(K) {
 				this.sync();
 				var content = this.html();
 				currentBlock.summery = content;
-				currentBlock.link = "index.php?a=summery&id=" + currentBlock.id;
+				currentBlock.link = "#summery-" + currentBlock.id;
 				storeBlocks();
 			}
 		});
