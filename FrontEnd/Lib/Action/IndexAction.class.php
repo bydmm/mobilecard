@@ -5,10 +5,16 @@ class IndexAction extends Action {
 		$blocksModel = D('Blocks');
 		$blocks = $blocksModel->select();
 		$blocks = $blocksModel->arrayObject($blocks);
-		$this->assign('blocks',$blocks);
+		$this->assign('blocks', $blocks);
 
 		$siteModel = D('site');
-		$this->assign('site', $siteModel->find());
+		$site = $siteModel->find();
+
+		$str = $site['footer'];
+		$pattern = "/([a-z0-9\-_\.]+@[a-z0-9]+\.[a-z0-9\-_\.]+)/"; 
+		// 将邮箱替换为相应的链接
+		$site['footer'] = preg_replace($pattern, '<a href="mailto:\\1">\\1</a>', $site['footer']);
+		$this->assign('site', $site);
 
 		$this->display();
 	}
