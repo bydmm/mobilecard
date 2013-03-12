@@ -66,7 +66,11 @@
 				resizeType : 0,
 				allowPreviewEmoticons : false,
 				allowImageUpload : false,
+<<<<<<< HEAD
 				langType : 'en',
+=======
+				//langType : 'en', 
+>>>>>>> 9ce5f9c468fd708270e0dad97bf9c4e06ac92c53
 				items : [
 					'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
 					'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
@@ -98,23 +102,17 @@
 			var link = currentBlock.link;
 			var linkType = 'hyperlink'; //link type select option val
 			var inputType = 'text'; //
-			
-			if(link.match(/^tel:\/\//)){
-				handleTel();
-			}; 
-			if(link.match(/^http:\/\//)){
-				handlehyperlink();
-			};
-			if(link.match(/^https:\/\//)){
-				handlehyperlink();
-			};
-			if(link.match(/^https:\/\/maps.google.com/)){
+			console.log(link);
+
+			if(link.match(/^http(s)?:\/\/maps.google/)){
 				handleMap();
-			};
-			if(link.match(/^mailto:/)){
+			}else if(link.match(/^tel:\/\//)){
+				handleTel();
+			}else if(link.match(/^http(s)?:\/\//)){
+				handlehyperlink();
+			}else if(link.match(/^mailto:/)){
 				handleMail();
-			};
-			if(link.match(/#summery/)){
+			}else if(link.match(/#summery/)){
 				handleSummery();
 			};
 			
@@ -215,7 +213,7 @@
 				resizeType : 0,
 				allowPreviewEmoticons : false,
 				allowImageUpload : false,
-				langType : 'en',
+				//langType : 'en',
 				items : [
 					'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
 					'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
