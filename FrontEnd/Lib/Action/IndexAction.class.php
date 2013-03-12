@@ -26,6 +26,14 @@ class IndexAction extends Action {
 
 		$this->display();
 	}
+
+	public function summery(){
+		$blocksModel = D('Blocks');
+		$blocks = $blocksModel->find('id'=>$_GET['id']);
+		$this->assign('summery', $summery);
+
+		$this->display();
+	}
 	
 	public function TechnicalSupport(){
 		$this->display();
@@ -53,6 +61,7 @@ class IndexAction extends Action {
 		$siteModel->add($site);
 
 		$blocks = $_POST['blocks'];
+		//var_dump($blocks);
 		foreach($blocks as $key=>$block){
 			unset($blocks[$key]['id']);
 		}
