@@ -58,6 +58,21 @@ body .gradient{
 .summery-footer{
 	margin-bottom:20px;
 }
+/*editor pluging*/
+.ke-icon-tel {
+        background-image: url(../skins/default/tel.png);
+        background-position: 0px -672px;
+        width: 16px;
+        height: 16px;
+}
+
+.ke-icon-email {
+        background-image: url(../skins/default/email.png);
+        background-position: 0px -672px;
+        width: 16px;
+        height: 16px;
+}
+
 /*loading */
 #facebookG{
 	margin:0 auto;

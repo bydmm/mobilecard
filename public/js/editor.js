@@ -1,4 +1,69 @@
 KindEditor.ready(function(K) {
+	//tel plugin
+	KindEditor.lang({
+		tel : 'Insert Tel',
+		tel_label : 'Tel',
+		email : 'Insert Mail',
+		email_label : 'Mail',
+	}, 'en');
+	
+	KindEditor.plugin('tel', function(K) {
+		var self = this, name = 'tel';
+		self.clickToolbar(name, function() {
+			var lang = self.lang(name + '.'),
+				html = '<div style="padding:20px;">' +
+					//url
+					'<div class="ke-dialog-row">' +
+					'<label for="tel" style="width:60px;">' + self.lang("tel_label") + '</label>' +
+					'<input class="ke-input-text" type="text" id="tel" name="tel" value="" style="width:260px;" /></div>',
+				dialog = self.createDialog({
+					name : name,
+					width : 450,
+					title : self.lang(name),
+					body : html,
+					yesBtn : {
+						name : self.lang('yes'),
+						click : function(e) {
+							var telnumber = telinput.val(),
+								html = '<a href="tel://'+ telnumber +'">' + telnumber + '</a> ';
+							self.insertHtml(html).hideDialog().focus();
+						}
+					}
+				}),
+				telinput = K('#tel', dialog.div);
+			telinput.focus();
+		});
+	});
+
+	KindEditor.plugin('email', function(K) {
+		var self = this, name = 'email';
+		self.clickToolbar(name, function() {
+			var lang = self.lang(name + '.'),
+				html = '<div style="padding:20px;">' +
+					//url
+					'<div class="ke-dialog-row">' +
+					'<label for="email" style="width:60px;">' + self.lang("email_label") + '</label>' +
+					'<input class="ke-input-text" type="email" id="email" name="email" value="" style="width:260px;" /></div>',
+				dialog = self.createDialog({
+					name : name,
+					width : 450,
+					title : self.lang(name),
+					body : html,
+					yesBtn : {
+						name : self.lang('yes'),
+						click : function(e) {
+							var email = emailinput.val(),
+								html = '<a href="mailto:'+ email +'">' + email + '</a> ';
+							self.insertHtml(html).hideDialog().focus();
+						}
+					}
+				}),
+				emailinput = K('#email', dialog.div);
+			emailinput.focus();
+		});
+	});
+	
+	
 	var upload = K.editor({
 		allowFileManager : true,
 		langType : 'en'
@@ -97,7 +162,7 @@ KindEditor.ready(function(K) {
 			items : [
 				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
 				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|', 'emoticons', 'image', 'link'],
+				'insertunorderedlist', '|', 'emoticons', 'image', 'link', '|', 'tel', 'email'],
 			afterChange : function() {
 				this.sync();
 				var content = this.html();
@@ -245,7 +310,7 @@ KindEditor.ready(function(K) {
 			items : [
 				'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
 				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-				'insertunorderedlist', '|', 'emoticons', 'image', 'link'],
+				'insertunorderedlist', '|', 'emoticons', 'image', 'link', '|', 'tel', 'email'],
 			afterChange : function() {
 				//this.sync();
 				var content = this.html();
