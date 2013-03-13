@@ -1,5 +1,6 @@
 .header{
 	cursor:pointer;
+	margin-top:5%;
 }
 a.custombtn:hover{
 	text-decoration: none;
@@ -51,8 +52,11 @@ body .gradient{
 .footer
 {
 	cursor:pointer;
-	margin:10px 0;
+	margin:5% 0;
 	text-align:center;
+}
+.summery-footer{
+	margin-bottom:20px;
 }
 /*loading */
 #facebookG{
