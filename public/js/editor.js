@@ -126,7 +126,9 @@ KindEditor.ready(function(K) {
 		var link = currentBlock.link;
 		var linkType = 'hyperlink'; //link type select option val
 		var inputType = 'text'; //
-
+		
+		$('.editor-link').val('');
+		
 		if(link.match(/^http(s)?:\/\/maps.google/)){
 			handleMap();
 		}else if(link.match(/^tel:\/\//)){
@@ -227,11 +229,12 @@ KindEditor.ready(function(K) {
 			storeBlocks();
 		});
 	}
-	 
+	
+	var help;
+	
 	function KindEditorHandle()
 	{
 		$('#content').val(currentBlock.summery);
-		var help;
 		help = K.create('#content', {
 			width : '100%',
 			minHeight : '200px',
@@ -244,13 +247,14 @@ KindEditor.ready(function(K) {
 				'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
 				'insertunorderedlist', '|', 'emoticons', 'image', 'link'],
 			afterChange : function() {
-				this.sync();
+				//this.sync();
 				var content = this.html();
 				currentBlock.summery = content;
 				currentBlock.link = "#summery-" + currentBlock.id;
 				storeBlocks();
 			}
 		});
+		
 	}
 	
 	function editorLinkHandle()
@@ -262,13 +266,13 @@ KindEditor.ready(function(K) {
 	function showLinkAndHideEidtor()
 	{
 		$('.content-group').hide(300);
-		$('.editor-link').show(300);
+		$('.link-group').show(300);
 	}
 	
 	function HideLinkAndShowEidtor()
 	{
 		$('.content-group').show(300);
-		$('.editor-link').hide(300);
+		$('.link-group').hide(300);
 	}
 	
 	function editorTitleHandle()
@@ -327,7 +331,8 @@ KindEditor.ready(function(K) {
 	//form
 	function reloadForm(self)
 	{	
-			
+		K.remove('#content');
+		
 		currentBlockIndex = self.attr('id');
 		findBlock(currentBlockIndex);
 		
@@ -397,18 +402,24 @@ KindEditor.ready(function(K) {
 			success: function(){
 				loading = false;
 				$('#myModal').modal('hide');
-				message('Success!');
+				savesuccess();
 			},
 			error: function(){
 				loading = false;
-				message('Error!');
 				$('#myModal').modal('hide');
+				saveerror();
 			}
 		});
 	});
 	
-	function message(msg){
-		$('#myModal myModalLabel').html(msg);
+	function savesuccess(){
+		$('.alert-error').hide();
+		$('.alert-success').show();
+	}
+	
+	function saveerror(){
+		$('.alert-success').hide();
+		$('.alert-error').show();
 	}
 	
 });
