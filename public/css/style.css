@@ -1,6 +1,6 @@
 .header{
 	cursor:pointer;
-	margin-top:5%;
+	margin:15px 0 5px 0px;
 }
 a.custombtn:hover{
 	text-decoration: none;
