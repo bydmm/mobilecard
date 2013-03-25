@@ -192,3 +192,22 @@ transform:scale(0.7);
 opacity:0.1}
 
 }
+.mark{
+  cursor: pointer;
+  position: relative;
+  margin: 5% 0;
+}
+.mark .content{
+  background: #E7E7E7;
+  padding: 1%;
+  border-radius: 5%;
+  min-height: 200px;
+}
+#close{
+  background: url(../images/close.png) right no-repeat;
+  width: 27px;
+  height: 24px;
+  position: absolute;
+  top: 1%;
+  right: 9%;
+}

@@ -171,6 +171,35 @@ KindEditor.ready(function(K) {
 			}
 		});
 	}
+
+  $('.preview .mark .content').click(function(){
+    showFormTabs('markform');
+    markEditorHandle();
+    $('.gradient').removeClass('gradient');
+    $(this).addClass('gradient');
+  });
+
+  function markEditorHandle()
+  {
+    var markeditor = KindEditor.create('#mark', {
+      width : '100%',
+      minHeight : '200px',
+      resizeType : 0,
+      allowPreviewEmoticons : false,
+      allowImageUpload : false,
+      langType : 'en',
+      items : [
+        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
+        'insertunorderedlist', '|', 'emoticons', 'image', 'link', '|', 'tel', 'email'],
+      afterChange : function() {
+        this.sync();
+        var content = console.log(this.html());
+        $('.preview .mark .content').html(content)
+        site['mark'] = content;
+      }
+    });
+  }
 	
 	$('a.custombtn').live('click', function(){
 		return preview;
