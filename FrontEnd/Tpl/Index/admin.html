@@ -66,7 +66,7 @@
 						<?php $first = $blocks[$i]; ?>
 						<?php $next = $blocks[$i+1]; ?>
 						<div class="row-fluid row-item">
-							<div draggable="true" class="block span6" >
+							<div draggable="true" class="block span5 offset1" >
 								<a 
 									id="<?php echo $first->id; ?>" 
 									order="<?php echo $first->order; ?>" 
@@ -81,7 +81,7 @@
 								</a>
 							</div>
 							<?php if($next):?>
-							<div draggable="true" class="block span6" >
+							<div draggable="true" class="block span5" >
 								<a 
 									id="<?php echo $next->id; ?>" 
 									order="<?php echo $next->order; ?>" 
