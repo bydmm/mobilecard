@@ -371,6 +371,7 @@ KindEditor.ready(function(K) {
 	{
 		//colorpicker
 		$('.editor-background-color #colorpicker').attr({'data-color': currentBlock.background_color });
+    $('.editor-background-color #colorpicker .input-medium').val(currentBlock.background_color);
 		$('.editor-background-color i').css({'background-color': currentBlock.background_color });
 		$('#colorpicker').colorpicker({
 		}).on('changeColor', function(ev){
@@ -378,7 +379,16 @@ KindEditor.ready(function(K) {
 		  $('#'+currentBlockIndex).css({'background-color': background_color });
 			currentBlock.background_color = background_color;
 			storeBlocks();
-		});			
+		});
+
+    $('.editor-background-color #colorpicker .input-medium').change(function(){
+      var color = $(this).val();
+      $('.editor-background-color i').css({'background-color': color});
+      $('#'+currentBlockIndex).css({'background-color': color });
+      currentBlock.background_color = color;
+      storeBlocks();
+    });
+
 	}
 	
 	function editorFontFamilyHandle()
