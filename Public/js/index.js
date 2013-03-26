@@ -51,6 +51,7 @@
       return unescape(cookieString.substring(start, end));
     }
 
+    $('.mark').show();
     // var ismark = getCookie('ismark');
 
     // if (!ismark) {
