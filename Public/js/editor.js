@@ -186,7 +186,8 @@ KindEditor.ready(function(K) {
       minHeight : '200px',
       resizeType : 0,
       allowPreviewEmoticons : false,
-      allowImageUpload : false,
+      allowImageUpload : true,
+      fillDescAfterUploadImage: true,
       langType : 'en',
       items : [
         'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
@@ -494,7 +495,6 @@ KindEditor.ready(function(K) {
 				return false;
 			}
 		});
-		console.log(site);
 		
 		$.ajax({ 
 			url : "index.php?a=saveSite",
