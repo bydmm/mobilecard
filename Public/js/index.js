@@ -2,7 +2,6 @@
   $(window).on('load', function () {
 		//define var
 		var preview = false;
-		var editor;
 		
 		Intialize();
 		//旋转重构	
@@ -21,16 +20,6 @@
 		function Intialize(){
 			var width = $('a.custombtn').width();
 			
-			// $('.preview a.custombtn').css({
-			// 	'height': width + 'px',
-			// 	'line-height': width + 'px',
-			// 	'font-size': width/4 + 'px'
-			// });
-			// 
-			// $('.preview .block').css({
-			// 	'height': width + 'px'
-			// });
-			
 			$('a.custombtn').animate(
 				{
 					'height': width + 'px',
@@ -41,5 +30,9 @@
 				'swing'
 			);
 		}
+
+		$('#close').click(function(){
+			$('.mark').hide();
+		});
   });
 }(window.jQuery);

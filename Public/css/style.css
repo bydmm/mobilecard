@@ -205,7 +205,7 @@ opacity:0.1}
 .mark{
   cursor: pointer;
   position: fixed;
-  margin: 0 0 7% 0;
+  margin: 0 0 5% 0;
   bottom: 0;
   width: 100%;
 }
@@ -233,15 +233,15 @@ opacity:0.1}
 }
 .mark .content::after {
   border-top-color: #E7E7E7;
-  border-width: 10px;
+  border-width: 20px;
   left: 50%;
-  margin-left: -10px;
+  margin-left: -20px;
 }
 .mark .content::before {
   border-top-color: #E7E7E7;
-  border-width: 11px;
+  border-width: 20px;
   left: 50%;
-  margin-left: -11px;
+  margin-left: -20px;
 }
 #close{
   background: url(../images/close.png) right no-repeat;
