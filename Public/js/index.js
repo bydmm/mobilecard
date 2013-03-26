@@ -51,14 +51,14 @@
       return unescape(cookieString.substring(start, end));
     }
 
-    var ismark = getCookie('ismark');
+    // var ismark = getCookie('ismark');
 
-    if (!ismark) {
-      $('.mark').show();
-      $('#close').click(function(){
-        setCookie('ismark', 1, 365);
-        $('.mark').hide();
-      });
-    } 
+    // if (!ismark) {
+    //   $('.mark').show();
+    //   $('#close').click(function(){
+    //     setCookie('ismark', 1, 365);
+    //     $('.mark').hide();
+    //   });
+    // } 
   });
 }(window.jQuery);
