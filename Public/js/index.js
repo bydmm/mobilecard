@@ -56,10 +56,10 @@
 
     // if (!ismark) {
     //   $('.mark').show();
-    //   $('#close').click(function(){
+      $('#close').click(function(){
     //     setCookie('ismark', 1, 365);
-    //     $('.mark').hide();
-    //   });
+        $('.mark').hide();
+      });
     // } 
   });
 }(window.jQuery);
