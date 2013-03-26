@@ -194,7 +194,7 @@ KindEditor.ready(function(K) {
         'insertunorderedlist', '|', 'emoticons', 'image', 'link', '|', 'tel', 'email'],
       afterChange : function() {
         this.sync();
-        var content = console.log(this.html());
+        var content = this.html();
         $('.preview .mark .content').html(content)
         site['mark'] = content;
       }
@@ -494,6 +494,7 @@ KindEditor.ready(function(K) {
 				return false;
 			}
 		});
+		console.log(site);
 		
 		$.ajax({ 
 			url : "index.php?a=saveSite",
