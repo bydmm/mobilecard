@@ -57,10 +57,11 @@
       <div class="span4 preview">
         <div class="basic">
           <div class="row-fluid header">
-            <span class="span4" >
-              <a href="##"><img class="logo" src="<?php echo $site['logo']?>"/></a>
-            </span>
-            <h3 class="pagetitle span8" ><?php echo $site['title']?></h3>
+            <div class="span12">
+              <div class="content">
+              <?php echo $site['header'];?>
+              </div>
+            </div>
           </div>
           <?php for($i=0; $i < count($blocks); $i = $i + 2 ): ?>
             <?php $first = $blocks[$i]; ?>
@@ -123,19 +124,9 @@
           <fieldset>
             <legend>Header</legend>
             <div class="control-group">
-              <label class="control-label" for="input01">Title</label>
+              <label class="control-label" for="input01">Header</label>
               <div class="controls">
-                <input id="pagetitle" type="text" value="<?php echo $title;?>" class="input-xlarge" id="">
-              </div>
-            </div>
-            <div class="control-group">
-              <label class="control-label" for="input01">LOGO</label>
-              <div class="controls">
-                <div id="drag-images">
-                  <span>Click</span>
-                  <img>
-                </div>
-                <input id="url3" type="hidden" value="<?php echo $LOGO;?>" class="input-xlarge" id="">
+                <textarea style="display:none" id="header"><?php echo $site['header'];?></textarea>
               </div>
             </div>
           </fieldset>
@@ -191,8 +182,7 @@
                     <option value="map">Map</option>
                     <option value="hyperlink">Hyperlink</option>
                     <option value="summery">Summery</option>
-                  </select>
-                  
+                  </select>  
               </div>
             </div>
         
@@ -230,6 +220,25 @@
         <form id="markform" style="display:none" class="formtabs form-horizontal">
           <fieldset>
             <legend>Mark</legend>
+            <div class="control-group">
+              <label class="control-label" for="input01">Mark Title</label>
+              <div class="controls">
+                <input id="pagetitle" type="text" value="<?php echo $title;?>" class="input-xlarge" id="">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="input01">Mark Icon</label>
+              <div class="controls">
+                <div id="drag-images">
+                  <?php if ($site['icon']) {
+                  ?><img class="icon" src="<?php echo $site['icon'];?>"/><?php
+                  } else {?>
+                  <span>Click</span>
+                  <?php }?>
+                  <input id="icon_url" type="hidden" value="" />
+                </div>
+              </div>
+            </div>
             <div class="control-group">
               <label class="control-label" for="input01">Mark</label>
               <div class="controls">
