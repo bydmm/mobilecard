@@ -1,259 +1,285 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<title>Admin</title>
-	<link rel="stylesheet" href="__PUBLIC__/css/bootstrap.css" type="text/css" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="__PUBLIC__/css/style.css" type="text/css" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="__PUBLIC__/css/slider.css" type="text/css" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="__PUBLIC__/css/colorpicker.css" type="text/css" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="__PUBLIC__/css/useradmin.css" type="text/css" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="__PUBLIC__/css/html5_drag_and_drop.css" type="text/css" title="no title" charset="utf-8">
-	<link rel="stylesheet" href="__PUBLIC__/editor/themes/default/default.css" />
+  <meta charset="utf-8">
+  <title>Admin</title>
+  <link rel="stylesheet" href="__PUBLIC__/css/bootstrap.css" type="text/css" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="__PUBLIC__/css/admin.css" type="text/css" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="__PUBLIC__/css/slider.css" type="text/css" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="__PUBLIC__/css/colorpicker.css" type="text/css" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="__PUBLIC__/css/useradmin.css" type="text/css" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="__PUBLIC__/css/html5_drag_and_drop.css" type="text/css" title="no title" charset="utf-8">
+  <link rel="stylesheet" href="__PUBLIC__/editor/themes/default/default.css" />
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-top">
-	  <div class="navbar-inner">
-	    <div class="container">
-				<a target="_blank" class="brand" href="__URL__" title="Personal Mobility Center" >
-					MobileCard
-				</a>
-				<div class="nav-collapse collapse">
-					<ul class="nav">
-					  <li class="active"><a target="_blank" href="__URL__/admin">Admin</a></li>
-					  <li><a target="_blank" href="__URL__/TechnicalSupport">Technical Support</a></li>
-					</ul>
-					<ul class="nav pull-right">
+  <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a target="_blank" class="brand" href="__URL__" title="Personal Mobility Center" >
+          MobileCard
+        </a>
+        <div class="nav-collapse collapse">
+          <ul class="nav">
+            <li class="active"><a target="_blank" href="__URL__/admin">Admin</a></li>
+            <li><a target="_blank" href="__URL__/TechnicalSupport">Technical Support</a></li>
+          </ul>
+          <ul class="nav pull-right">
             <li><a target="_blank" href="__URL__">Preview</a></li>
             <li class="divider-vertical"></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								Save & Exit <b class="caret"></b>
-							</a>
+                Save & Exit <b class="caret"></b>
+              </a>
               <ul class="dropdown-menu">
-								<li><a id="saveSite" href="#">Save</a></li>
-								<li class="divider"></li>
+                <li><a id="saveSite" href="#">Save</a></li>
+                <li class="divider"></li>
                 <li><a href="__URL__/logout">Logout</a></li>
               </ul>
             </li>
           </ul>
-			 	</div><!--/.nav-collapse -->
-				
-	    </div>
-	  </div>
-	</div>
-	
-	<div class="container-fluid">
-		
-		<div class="alert alert-success" style="display:none">
-		  Success!
-		</div>
-		
-		<div class="alert alert-error" style="display:none" >
-			NetWork Error!
-		</div>
-		
-		<div class="row-fluid">
-			<div class="span4 preview">
-				<div class="basic">
-					<div class="row-fluid header">
-						<span class="span4" >
-							<a href="##"><img class="logo" src="<?php echo $site['logo']?>"/></a>
-						</span>
-						<h3 class="pagetitle span8" ><?php echo $site['title']?></h3>
-					</div>
-					<?php for($i=0; $i < count($blocks); $i = $i + 2 ): ?>
-						<?php $first = $blocks[$i]; ?>
-						<?php $next = $blocks[$i+1]; ?>
-						<div class="row-fluid row-item">
-							<div draggable="true" class="block span6" >
-								<a 
-									id="<?php echo $first->id; ?>" 
-									order="<?php echo $first->order; ?>" 
-									class="custombtn"
-									style="
-										border-radius:<?php echo $first->border_radius;?>%;
-										background-color:<?php echo $first->background_color;?>;
-										font-family:<?php echo $first->font_family;?>;
-									"
-									href="<?php echo $first->link; ?>">
-									<?php echo $first->title; ?>
-								</a>
-							</div>
-							<?php if($next):?>
-							<div draggable="true" class="block span6" >
-								<a 
-									id="<?php echo $next->id; ?>" 
-									order="<?php echo $next->order; ?>" 
-									class="custombtn" 
-									style="
-										border-radius:<?php echo $next->border_radius;?>%;
-										background-color:<?php echo $next->background_color;?>;
-										font-family:<?php echo $next->font_family;?>;
-									"
-									href="<?php echo $next->link; ?>">
-									<?php echo $next->title; ?>
-								</a>
-							</div>
-							<?php endif;?>
-						</div>
-						
-					<?php endfor;?>
-					<div class="row-fluid">
-						<a id="add" class="span12 add btn" href="##" >ADD+</a>
-					</div>	
-					<div class="row-fluid footer">
-						<div class="span12">
-							<?php echo $site['footer'];?>
-						</div>
-					</div>
-					
-				</div>
-			</div>
-			<div class="span8 tools">
-				<form id="headfrom" style="display:none" class="formtabs form-horizontal">
-					<fieldset>
-				    <legend>Header</legend>
-						<div class="control-group">
-				      <label class="control-label" for="input01">Title</label>
-				      <div class="controls">
-				        <input id="pagetitle" type="text" value="<?php echo $title;?>" class="input-xlarge" id="">
-				      </div>
-				    </div>
-						<div class="control-group">
-				      <label class="control-label" for="input01">LOGO</label>
-				      <div class="controls">
-								<div id="drag-images">
-									<span>Click</span>
-									<img>
-								</div>
-				        <input id="url3" type="hidden" value="<?php echo $LOGO;?>" class="input-xlarge" id="">
-				      </div>
-				    </div>
-					</fieldset>
-				</form>
-				<form id="blockfrom" style="display:none" class="formtabs form-horizontal">
-				  <fieldset>
-				    <legend>Custom Button</legend>
-				    <div class="control-group">
-				      <label class="control-label" for="input01">Border-radius</label>
-				      <div class="controls">
-				        <input id="editor-border-radius" type="hidden" class="input-xlarge" id="">
-				        <p class="help-block">slider</p>
-				      </div>
-				    </div>
-				    <div class="control-group editor-background-color">
-				      <label class="control-label" for="input01">Colorpicker</label>
-				      <div class="controls">
-								<div id="colorpicker" class="input-append color" data-color="rgb(0, 0, 0)" data-color-format="rgb">
-								  <input type="text" class="input-medium" value="" readonly >
-								  <span class="add-on">
-										<i style="background-color: rgb(0, 0, 0)"></i>
-									</span>
-								</div>
-				      </div>
-				    </div>
-						<div class="control-group">
-				      <label class="control-label" for="input01">Mobile Web Safe Fonts</label>
-				      <div class="controls">
-									<select name="font-family" id="editor-font-family">
-										<option value="Helvetica Neue, Helvetica, Arial, sans-serif">
-											Arial/Helvetica
-										</option>
-										<option value="'Courier New', Courier, monospace">Courier</option>
-										<option value="Georgia, serif">Georgia</option>
-										<option value="'Times New Roman', Times, serif">Times New Roman</option>
-										<option value="'Trebuchet MS', Helvetica, sans-serif">Trebuchet MS</option>
-										<option value="Verdana, Geneva, sans-serif">Verdana</option>
-									</select>
-				      </div>
-				    </div>
-				    <div class="control-group">
-				      <label class="control-label" for="input01">Title</label>
-				      <div class="controls">
-									<input type="text" class="span4 editor-title" name="title" value="">
-				      </div>
-				    </div>			
-				    <div class="control-group">
-				      <label class="control-label" for="">Link Type</label>
-				      <div class="controls">
-									<select name="" class="span3" id="link-type">
-										<option value="tel">Tel</option>
-										<option value="mail">Mail</option>
-										<option value="map">Map</option>
-										<option value="hyperlink">Hyperlink</option>
-										<option value="summery">Summery</option>
-									</select>
-									
-				      </div>
-				    </div>
-				
-						<div class="control-group link-group">
-				      <label class="control-label" for="">Link</label>
-				      <div class="controls">
-								<textarea rows="3" class="span8 editor-link"></textarea>
-				      </div>
-				    </div>
-				
-						<div class="control-group content-group">
-				      <label class="control-label" for="">Content</label>
-				      <div class="controls">
-								<textarea id="content"></textarea>
-				      </div>
-				    </div>
-						<div class="control-group">
-				      <div class="controls">
-								<a id="block-remove" class="btn btn-danger ">Remove</a>
-				      </div>
-				    </div>
-				  </fieldset>
-				</form>
-				<form id="footerform" style="display:none" class="formtabs form-horizontal">
-					<fieldset>
-				    <legend>Footer</legend>
-						<div class="control-group">
-				      <label class="control-label" for="input01">Footer</label>
-				      <div class="controls">
-								<textarea style="display:none" id="footer"><?php echo $site['footer']?></textarea>
-				      </div>
-				    </div>
-					</fieldset>
-				</form>
-			</div>
-		</div>
-	</div>
-	
-	<!-- Modal -->
-	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	  <div class="modal-header">
-	    <h3 id="myModalLabel">Saving.....</h3>
-	  </div>
-	  <div class="modal-body">
-			<div id="facebookG">
-			<div id="blockG_1" class="facebook_blockG">
-			</div>
-			<div id="blockG_2" class="facebook_blockG">
-			</div>
-			<div id="blockG_3" class="facebook_blockG">
-			</div>
-			</div>
-	  </div>
-	</div>
+        </div><!--/.nav-collapse -->
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="container-fluid">
+    
+    <div class="alert alert-success" style="display:none">
+      Success!
+    </div>
+    
+    <div class="alert alert-error" style="display:none" >
+      NetWork Error!
+    </div>
+    
+    <div class="row-fluid">
+      <div class="span4 preview">
+        <div class="basic">
+          <div class="row-fluid header">
+            <div class="span12">
+              <div class="content">
+              <?php echo $site['header'];?>
+              </div>
+            </div>
+          </div>
+          <?php for($i=0; $i < count($blocks); $i = $i + 2 ): ?>
+            <?php $first = $blocks[$i]; ?>
+            <?php $next = $blocks[$i+1]; ?>
+            <div class="row-fluid row-item">
+              <div draggable="true" class="block span5 offset1" >
+                <a 
+                  id="<?php echo $first->id; ?>" 
+                  order="<?php echo $first->order; ?>" 
+                  class="custombtn"
+                  style="
+                    border-radius:<?php echo $first->border_radius;?>%;
+                    background-color:<?php echo $first->background_color;?>;
+                    font-family:<?php echo $first->font_family;?>;
+                  "
+                  href="<?php echo $first->link; ?>">
+                  <?php echo $first->title; ?>
+                </a>
+              </div>
+              <?php if($next):?>
+              <div draggable="true" class="block span5" >
+                <a 
+                  id="<?php echo $next->id; ?>" 
+                  order="<?php echo $next->order; ?>" 
+                  class="custombtn" 
+                  style="
+                    border-radius:<?php echo $next->border_radius;?>%;
+                    background-color:<?php echo $next->background_color;?>;
+                    font-family:<?php echo $next->font_family;?>;
+                  "
+                  href="<?php echo $next->link; ?>">
+                  <?php echo $next->title; ?>
+                </a>
+              </div>
+              <?php endif;?>
+            </div>
+            
+          <?php endfor;?>
+          <div class="row-fluid">
+            <a id="add" class="span12 add btn" href="##" >ADD+</a>
+          </div>  
+          <div class="row-fluid footer">
+            <div class="span12">
+              <?php echo $site['footer'];?>
+            </div>
+          </div>
+          <div class="row-fluid mark">
+            <div class="span10 offset1">
+              <div id="close"></div>
+              <div class="content">
+              <?php echo $site['mark'];?>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="span8 tools">
+        <form id="headfrom" style="display:none" class="formtabs form-horizontal">
+          <fieldset>
+            <legend>Header</legend>
+            <div class="control-group">
+              <label class="control-label" for="input01">Header</label>
+              <div class="controls">
+                <textarea style="display:none" id="header"><?php echo $site['header'];?></textarea>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+        <form id="blockfrom" style="display:none" class="formtabs form-horizontal">
+          <fieldset>
+            <legend>Custom Button</legend>
+            <div class="control-group">
+              <label class="control-label" for="input01">Border-radius</label>
+              <div class="controls">
+                <input id="editor-border-radius" type="hidden" class="input-xlarge" id="">
+                <p class="help-block">slider</p>
+              </div>
+            </div>
+            <div class="control-group editor-background-color">
+              <label class="control-label" for="input01">Colorpicker</label>
+              <div class="controls">
+                <div id="colorpicker" class="input-append color" data-color="rgb(0, 0, 0)" data-color-format="rgb">
+                  <input type="text" class="input-medium" value=""  >
+                  <span class="add-on">
+                    <i style="background-color: rgb(0, 0, 0)"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="input01">Mobile Web Safe Fonts</label>
+              <div class="controls">
+                  <select name="font-family" id="editor-font-family">
+                    <option value="Helvetica Neue, Helvetica, Arial, sans-serif">
+                      Arial/Helvetica
+                    </option>
+                    <option value="'Courier New', Courier, monospace">Courier</option>
+                    <option value="Georgia, serif">Georgia</option>
+                    <option value="'Times New Roman', Times, serif">Times New Roman</option>
+                    <option value="'Trebuchet MS', Helvetica, sans-serif">Trebuchet MS</option>
+                    <option value="Verdana, Geneva, sans-serif">Verdana</option>
+                  </select>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="input01">Title</label>
+              <div class="controls">
+                  <input type="text" class="span4 editor-title" name="title" value="">
+              </div>
+            </div>      
+            <div class="control-group">
+              <label class="control-label" for="">Link Type</label>
+              <div class="controls">
+                  <select name="" class="span3" id="link-type">
+                    <option value="tel">Tel</option>
+                    <option value="mail">Mail</option>
+                    <option value="map">Map</option>
+                    <option value="hyperlink">Hyperlink</option>
+                    <option value="summery">Summery</option>
+                  </select>  
+              </div>
+            </div>
+        
+            <div class="control-group link-group">
+              <label class="control-label" for="">Link</label>
+              <div class="controls">
+                <textarea rows="3" class="span8 editor-link"></textarea>
+              </div>
+            </div>
+        
+            <div class="control-group content-group">
+              <label class="control-label" for="">Content</label>
+              <div class="controls">
+                <textarea id="content"></textarea>
+              </div>
+            </div>
+            <div class="control-group">
+              <div class="controls">
+                <a id="block-remove" class="btn btn-danger ">Remove</a>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+        <form id="footerform" style="display:none" class="formtabs form-horizontal">
+          <fieldset>
+            <legend>Footer</legend>
+            <div class="control-group">
+              <label class="control-label" for="input01">Footer</label>
+              <div class="controls">
+                <textarea style="display:none" id="footer"><?php echo $site['footer']?></textarea>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+        <form id="markform" style="display:none" class="formtabs form-horizontal">
+          <fieldset>
+            <legend>Mark</legend>
+            <div class="control-group">
+              <label class="control-label" for="input01">Mark Title</label>
+              <div class="controls">
+                <input id="pagetitle" type="text" value="<?php echo $title;?>" class="input-xlarge" id="">
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="input01">Mark Icon</label>
+              <div class="controls">
+                <div id="drag-images">
+                  <?php if ($site['icon']) {
+                  ?><img class="icon" src="<?php echo $site['icon'];?>"/><?php
+                  } else {?>
+                  <span>Click</span>
+                  <?php }?>
+                  <input id="icon_url" type="hidden" value="" />
+                </div>
+              </div>
+            </div>
+            <div class="control-group">
+              <label class="control-label" for="input01">Mark</label>
+              <div class="controls">
+                <textarea style="display:none" id="mark"><?php echo $site['mark'];?></textarea>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Modal -->
+  <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+      <h3 id="myModalLabel">Saving.....</h3>
+    </div>
+    <div class="modal-body">
+      <div id="facebookG">
+      <div id="blockG_1" class="facebook_blockG">
+      </div>
+      <div id="blockG_2" class="facebook_blockG">
+      </div>
+      <div id="blockG_3" class="facebook_blockG">
+      </div>
+      </div>
+    </div>
+  </div>
 
-
-	<script type="text/javascript" charset="utf-8">
-		var blocks = eval(<?php echo json_encode($blocks);?>);
-		var site = eval(<?php echo json_encode($site);?>);
-		var currentBlockIndex = "1";
-	</script>
-	<script type="text/javascript" src="__PUBLIC__/js/jQuery.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/js/bootstrap.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/js/styles.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/js/bootstrap-slider.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/js/bootstrap-colorpicker.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/js/html5_drag_and_drop.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/editor/kindeditor.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/editor/lang/en.js"></script>
-	<script type="text/javascript" src="__PUBLIC__/js/editor.js"></script>
+  <script type="text/javascript" charset="utf-8">
+    var blocks = eval(<?php echo json_encode($blocks);?>);
+    var site = eval(<?php echo json_encode($site);?>);
+    var currentBlockIndex = "1";
+  </script>
+  <script type="text/javascript" src="__PUBLIC__/js/jQuery.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/js/bootstrap.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/js/bootstrap-slider.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/js/bootstrap-colorpicker.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/js/html5_drag_and_drop.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/editor/kindeditor.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/editor/lang/en.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/js/editor.js"></script>
 </body>
 </html>
