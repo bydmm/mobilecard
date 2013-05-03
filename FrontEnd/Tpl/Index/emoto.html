@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<?php foreach($emotos as $emoto):?>
+	<dict>
+		<key>name</key>
+		<string><?php echo $emoto['action'];?></string>
+		<key>age</key>
+		<?php if($emoto['age']):?><true/><?php else:?><false/><?php endif;?>
+			
+	</dict>
+	<?php endforeach;?>
+</array>
+</plist>

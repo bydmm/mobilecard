@@ -134,4 +134,11 @@ class IndexAction extends Action {
     	session('name', null);
     	$this->success('Logout', '__URL__/login');
     }
+	
+	public function emoto(){
+		$emoto = D('Emoto');
+		$emotos = $emoto->select();
+		$this->assign('emotos',$emotos);
+		$this->display();
+	}
 }
