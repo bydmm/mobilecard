@@ -123,10 +123,10 @@ class IndexAction extends Action {
     	$this->success('Logout', '__URL__/login');
     }
 	
-	public function emoto(){
-		$emoto = D('Emoto');
-		$emotos = $emoto->select();
-		$this->assign('emotos',$emotos);
-		$this->display();
-	}
+	// public function emoto(){
+	// 	$emoto = D('Emoto');
+	// 	$emotos = $emoto->select();
+	// 	$this->assign('emotos',$emotos);
+	// 	$this->display();
+	// }
 }
