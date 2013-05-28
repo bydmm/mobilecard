@@ -20,7 +20,7 @@
     <?php for($i=0; $i < count($blocks); $i = $i + 2 ): ?>
       <?php $first = $blocks[$i]; ?>
       <?php $next = $blocks[$i+1]; ?>
-      <div class="row-fluid">
+      <div class="row-fluid" style="margin-bottom:1.5%">
         <div draggable="true" class="block span5 offset1" >
           <a
             id="<?php echo $first->id; ?>" 
@@ -30,6 +30,7 @@
               border-radius:<?php echo $first->border_radius;?>%;
               background-color:<?php echo $first->background_color;?>;
               font-family:<?php echo $first->font_family;?>;
+              color:<?php echo $first->title_color;?>;
             "
             href="<?php echo $first->link; ?>">
             <?php echo $first->title; ?>
@@ -46,6 +47,7 @@
               border-radius:<?php echo $next->border_radius;?>%;
               background-color:<?php echo $next->background_color;?>;
               font-family:<?php echo $next->font_family;?>;
+              color:<?php echo $next->title_color;?>;
             "
             href="<?php echo $next->link; ?>">
             <?php echo $next->title; ?>
@@ -57,14 +59,6 @@
     <div class="row-fluid footer">
       <div class="span12">
         <?php echo $site['footer'];?>
-      </div>
-    </div>
-    <div class="row-fluid mark">
-      <div class="span10 offset1">
-        <div id="close"></div>
-        <div class="content">
-        <?php echo $site['mark'];?>
-        </div>
       </div>
     </div>
   </div>

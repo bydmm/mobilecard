@@ -442,6 +442,31 @@ KindEditor.ready(function(K) {
     });
 
   }
+
+  function titleColorpickerHandle()
+  {
+    //colorpicker
+    $('.editor-title-color #colorpicker').attr({'data-color': currentBlock.title_color });
+    $('.editor-title-color #titlecolorpicker .input-medium').val(currentBlock.title_color);
+    $('.editor-title-color i').css({'background-color': currentBlock.title_color });
+    $('#titlecolorpicker').colorpicker({
+    }).on('changeColor', function(ev){
+      var title_color = ev.color.toHex();
+      $('#'+currentBlockIndex).css({'color': title_color });
+      currentBlock.title_color = title_color;
+      storeBlocks();
+    });
+
+    $('.editor-title-color #titlecolorpicker .input-medium').change(function(){
+      var title_color = $(this).val();
+      $('.editor-title-color i').css({'color': title_color});
+      $('#'+currentBlockIndex).css({'color': title_color });
+      currentBlock.title_color = title_color;
+      storeBlocks();
+    });
+
+  }
+
   
   function editorFontFamilyHandle()
   {
@@ -468,6 +493,7 @@ KindEditor.ready(function(K) {
     editorLinkHandle();
     editorBorderRadiuseHandle();
     colorpickerHandle();
+    titleColorpickerHandle();
     editorFontFamilyHandle();
     
   }

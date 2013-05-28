@@ -76,6 +76,7 @@
                     border-radius:<?php echo $first->border_radius;?>%;
                     background-color:<?php echo $first->background_color;?>;
                     font-family:<?php echo $first->font_family;?>;
+                    color:<?php echo $first->title_color;?>;
                   "
                   href="<?php echo $first->link; ?>">
                   <?php echo $first->title; ?>
@@ -91,6 +92,7 @@
                     border-radius:<?php echo $next->border_radius;?>%;
                     background-color:<?php echo $next->background_color;?>;
                     font-family:<?php echo $next->font_family;?>;
+                    color:<?php echo $next->title_color;?>;
                   "
                   href="<?php echo $next->link; ?>">
                   <?php echo $next->title; ?>
@@ -172,7 +174,18 @@
               <div class="controls">
                   <input type="text" class="span4 editor-title" name="title" value="">
               </div>
-            </div>      
+            </div>   
+            <div class="control-group editor-title-color">
+              <label class="control-label" for="input01">Title Color</label>
+              <div class="controls">
+                <div id="titlecolorpicker" class="input-append color" data-color="rgb(0, 0, 0)" data-color-format="rgb">
+                  <input type="text" class="input-medium" value=""  >
+                  <span class="add-on">
+                    <i style="background-color: rgb(0, 0, 0)"></i>
+                  </span>
+                </div>
+              </div>
+            </div>   
             <div class="control-group">
               <label class="control-label" for="">Link Type</label>
               <div class="controls">
@@ -239,7 +252,7 @@
                 </div>
               </div>
             </div>
-            <div class="control-group">
+            <div style="display:none"class="control-group">
               <label class="control-label" for="input01">Mark</label>
               <div class="controls">
                 <textarea style="display:none" id="mark"><?php echo $site['mark'];?></textarea>

@@ -78,7 +78,8 @@
         "border_radius":"15%",
         "background_color":"rgb(255, 122, 0)",
         "font_family":"",
-        "summery":""
+        "summery":"",
+        "title_color":"rgb(255, 255, 255)"
       });
     }
     
@@ -104,6 +105,7 @@
           + '; line-height:' + line_height
           + '; font-size:' + font_size
           + '; border_radius:' + blocks[index-1].border_radius
+          + '; color:' + blocks[index-1].title_color
           + '; backgroundColor:' + blocks[index-1].backgroundColor;
           
           

@@ -64,7 +64,10 @@ class IndexAction extends Action {
 
 		$blocksModel = D('Blocks');
 		$blocksModel->where('id > 0')->delete();
-		$result = $blocksModel->addAll($blocks);
+		foreach ($blocks as $key => $value) {
+			$blocksModel->add($value);
+		}
+
 		if ($result){
 		    // success
 		    $this->ajaxReturn($result, "success！", 1);
