@@ -1,5 +1,10 @@
 KindEditor.ready(function(K) {
   //tel plugin
+
+  var editoritems = [
+        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist',
+        'insertunorderedlist', '|', 'emoticons', 'image', 'link', '|', 'tel', 'email'];
   KindEditor.lang({
     tel : 'Insert Tel',
     tel_label : 'Tel',
@@ -152,10 +157,7 @@ KindEditor.ready(function(K) {
       allowImageUpload : true,
       fillDescAfterUploadImage: true,
       langType : 'en',
-      items : [
-        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-        'insertunorderedlist', '|', 'emoticons', 'image', 'link', '|', 'tel', 'email'],
+      items : editoritems,
       afterChange : function() {
         this.sync();
         var content = this.html();
@@ -181,10 +183,7 @@ KindEditor.ready(function(K) {
       allowPreviewEmoticons : false,
       allowImageUpload : false,
       langType : 'en',
-      items : [
-        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-        'insertunorderedlist', '|', 'emoticons', 'image', 'link', '|', 'tel', 'email'],
+      items : editoritems,
       afterChange : function() {
         this.sync();
         var content = this.html();
@@ -211,10 +210,7 @@ KindEditor.ready(function(K) {
       allowImageUpload : true,
       fillDescAfterUploadImage: true,
       langType : 'en',
-      items : [
-        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-        'insertunorderedlist', '|', 'emoticons', 'image', 'link', '|', 'tel', 'email'],
+      items : editoritems,
       afterChange : function() {
         this.sync();
         var content = this.html();
@@ -359,10 +355,7 @@ KindEditor.ready(function(K) {
       allowPreviewEmoticons : false,
       allowImageUpload : false,
       langType : 'en',
-      items : [
-        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
-        'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'insertorderedlist',
-        'insertunorderedlist', '|', 'emoticons', 'image', 'link', '|', 'tel', 'email'],
+      items : editoritems,
       afterChange : function() {
         //this.sync();
         var content = this.html();
