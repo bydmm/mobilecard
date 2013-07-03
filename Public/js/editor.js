@@ -298,51 +298,56 @@ KindEditor.ready(function(K) {
     }
     
   }
-  
-  function LinkChangeHandle() //当用户输入或者改变链接类型的时候重新渲染表单，以及保存到JSON中去
+  // 当用户输入或者改变链接类型的时候重新渲染表单，以及保存到JSON中去
+  function LinkChangeHandle()
   {
-    var prefix = '';
     $('#link-type').change(function(){
-      var linkType = $(this).val();
-      var inputType = 'text';
-      switch(linkType){
-        case 'tel':
-          prefix = "tel://";
-          showLinkAndHideEidtor();
-          break;
-
-        case 'hyperlink':
-          inputType = 'url'
-          showLinkAndHideEidtor();
-          break;
-
-        case 'mail':
-          inputType = 'email'
-          prefix = "mailto:";
-          showLinkAndHideEidtor();
-          break;
-
-        case 'map':
-          inputType = 'url'
-          showLinkAndHideEidtor();
-          break;
-
-        case 'summery':
-          HideLinkAndShowEidtor();
-          KindEditorHandle();
-          break;        
-      }
-      $(".editor-link").prop('type',inputType);
+      link_helper($(this).val());
     });
-    
     $(".editor-link").keyup(function(){
+      var prefix = link_helper($('#link-type').val());
       var link = $(this).val();
       $('#'+currentBlockIndex).attr('href', link);
+      console.log(prefix + link);
       currentBlock.link = prefix + link;
       storeBlocks();
     });
   }
   
+  function link_helper(linkType)
+  {
+    var prefix = '';
+    var inputType = 'text';
+    switch(linkType){
+      case 'tel':
+        prefix = "tel://";
+        showLinkAndHideEidtor();
+        break;
+
+      case 'hyperlink':
+        inputType = 'url';
+        showLinkAndHideEidtor();
+        break;
+
+      case 'mail':
+        inputType = 'email';
+        prefix = "mailto:";
+        showLinkAndHideEidtor();
+        break;
+
+      case 'map':
+        inputType = 'url';
+        showLinkAndHideEidtor();
+        break;
+
+      case 'summery':
+        HideLinkAndShowEidtor();
+        KindEditorHandle();
+        break;
+    }
+    $(".editor-link").attr('type',inputType);
+    return prefix;
+  }
   var help;
   
   function KindEditorHandle()
