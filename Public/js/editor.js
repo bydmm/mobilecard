@@ -2,7 +2,7 @@ KindEditor.ready(function(K) {
   //tel plugin
 
   var editoritems = [
-        'fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
+        'source','fontname', 'fontsize', '|', 'forecolor', 'hilitecolor', 'bold', 'italic', 'underline',
         'removeformat', '|', 'justifyleft', 'justifycenter', 'justifyright', 'justifyfull', 'insertorderedlist',
         'insertunorderedlist', '|', 'emoticons', 'image', 'link', '|', 'tel', 'email'];
   KindEditor.lang({
