@@ -128,7 +128,7 @@ class IndexAction extends Action {
 	
 	public function emoto(){
 		$emoto = D('Emoto');
-		$emotos = $emoto->where("C != 'x'")->select();
+		$emotos = $emoto->select();
 		$this->assign('emotos',$emotos);
 		$this->display();
 	}

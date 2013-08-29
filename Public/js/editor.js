@@ -161,7 +161,7 @@ KindEditor.ready(function(K) {
       afterChange : function() {
         this.sync();
         var content = this.html();
-        $('.preview .header .content').html(content)
+        $('.preview .header .content').html(content);
         site['header'] = content;
       }
     });
@@ -181,7 +181,7 @@ KindEditor.ready(function(K) {
       minHeight : '200px',
       resizeType : 0,
       allowPreviewEmoticons : false,
-      allowImageUpload : false,
+      allowImageUpload : true,
       langType : 'en',
       items : editoritems,
       afterChange : function() {
