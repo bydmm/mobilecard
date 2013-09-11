@@ -358,7 +358,7 @@ KindEditor.ready(function(K) {
       minHeight : '200px',
       resizeType : 0,
       allowPreviewEmoticons : false,
-      allowImageUpload : false,
+      allowImageUpload : true,
       langType : 'en',
       items : editoritems,
       afterChange : function() {
